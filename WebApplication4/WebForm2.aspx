@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication4.WebForm2" %>
-
+<%--<%@ OutputCache Duration="60" VaryByParam="none" %>--%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,8 +15,7 @@
             <asp:ListItem Text="English" Value="en-us" />
              <asp:ListItem Text="ქართული" Value="ka-ge" />
         </asp:DropDownList>
-       
-
+        <asp:Label ID="lbltime" runat="server" />
 
         <p>
         <asp:TextBox ID="Name"  meta:resourcekey="Name" runat="server"></asp:TextBox>
@@ -40,7 +39,7 @@
             
             <asp:Button ID="Add_button" runat="server" OnClick="AddButton"  meta:resourceKey="Add_button" />
         </p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"  Height="191px" Width="634px">
+        <asp:GridView ID="AuthorGrid" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None"  Height="191px" Width="634px">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -65,6 +64,7 @@
       
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:levaniDBConnectionString %>"
+          
             DeleteCommand="DeteleUser @ID"
             SelectCommand="getAllAuthors"
             UpdateCommand="UpdateAuthors @AuthorName,  @AuthotLastname,  @AuthorNationality,  @Genre,  @Birthdate,  @ID">

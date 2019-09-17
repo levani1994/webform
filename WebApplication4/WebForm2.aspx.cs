@@ -15,19 +15,31 @@ namespace WebApplication4
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-        
-        }
 
+            //{
+
+            //}
+            //Thread.Sleep(5000);
+            //Response.Write("this page was generated and cached at:" +
+            //    DateTime.Now.ToString());
+            lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
+        }
+ //viewstate  gridview databinding  using connect c#
+//objectdata source
+//calke klasi bazastan kavshiristvis da bazidan monacemebis wamosagebad
         //language change
         protected override void InitializeCulture()
         {
-            if (Session["lang"] != null)
+
+
+            HttpCookie cookie = Request.Cookies["language"];
+           
+            if (cookie != null)
             {
-                Culture = Session["lang"].ToString();
-                UICulture = Session["lang"].ToString();
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Session["lang"].ToString());
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(Session["lang"].ToString());
+                Culture = cookie.Value.ToString();
+                UICulture = cookie.Value.ToString();
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
 
 
                 base.InitializeCulture();
@@ -36,8 +48,11 @@ namespace WebApplication4
         
         protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            Session["lang"] = DropDownList.SelectedValue;
+            HttpCookie cookie = new HttpCookie("language");
+            cookie.Value = DropDownList.SelectedValue;
+            cookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(cookie);
+            //Session["lang"] = DropDownList.SelectedValue;
             Response.Redirect("WebForm2.aspx");
         }
 
@@ -61,6 +76,6 @@ namespace WebApplication4
            
         }
 
-        
+       
     }
 }

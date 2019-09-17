@@ -31,6 +31,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList;
         
         /// <summary>
+        /// lbltime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltime;
+        
+        /// <summary>
         /// Name control.
         /// </summary>
         /// <remarks>
@@ -85,13 +94,13 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.Button Add_button;
         
         /// <summary>
-        /// GridView1 control.
+        /// AuthorGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView AuthorGrid;
         
         /// <summary>
         /// SqlDataSource1 control.
