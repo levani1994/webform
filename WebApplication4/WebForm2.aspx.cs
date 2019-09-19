@@ -9,9 +9,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace WebApplication4
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm2 : Connection
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,9 +62,9 @@ namespace WebApplication4
         //get users from sql
         protected void AddButton(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=localhost;Initial Catalog=levaniDB;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("InsertIntoDbo", con);
+            Connection connection = new Connection();
+            connection.Create_Connection();
+            SqlCommand cmd = new SqlCommand("InsertIntoDbo",  conn );
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
             cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
@@ -71,11 +72,32 @@ namespace WebApplication4
             cmd.Parameters.AddWithValue("@Genre", Genre.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
             cmd.ExecuteNonQuery();
-            Response.Redirect("WebForm2");
-            con.Close();
-           
+          
+            conn.Close();
+        
+           AuthorGrid.DataBind();
+          //  Response.Redirect("WebForm2");
         }
 
-       
+
+        protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowState != DataControlRowState.Edit) // check for RowState
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow) //check for RowType
+                {
+                    string id = e.Row.Cells[0].Text; // Get the id to be deleted
+                                                     //cast the ShowDeleteButton link to linkbutton
+                    LinkButton lb = (LinkButton)e.Row.Cells[6].Controls[2];
+                    if (lb != null)
+                    {
+                        //attach the JavaScript function with the ID as the paramter
+                        lb.Attributes.Add("onclick", "return ConfirmOnDelete(" + id + ");");
+                    }
+                }
+            }
+        }
+
+     
     }
 }
