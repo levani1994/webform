@@ -7,20 +7,15 @@ namespace WebApplication4
 {
     public class Authors
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
-        public string nationality { get; set; }
-        public string genre { get; set; }
-        public DateTime birthdate { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Nationality { get; set; }
+        public string Genre { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string DateDeleted { get; set; }
+        public string DateUpdated { get; set; }
+        public string DateInserted { get; set; }
 
-    }
-}
-namespace WebApplication4
-{
-
-
-    partial class authors
-    {
     }
 }

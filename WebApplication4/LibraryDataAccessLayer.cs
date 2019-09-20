@@ -22,12 +22,15 @@ namespace WebApplication4
             {
               
                 Authors authors = new Authors();
-                authors.id = Convert.ToInt32(reader["ID"]);
-                authors.name = reader["AuthorName"].ToString();
-                authors.surname = reader["AuthotLastname"].ToString();
-                authors.nationality = reader["AuthorNationality"].ToString();
-                authors.genre = reader["Genre"].ToString();
-                authors.birthdate = Convert.ToDateTime(reader["Birthdate"].ToString());
+                authors.ID = Convert.ToInt32(reader["ID"]);
+                authors.Name = reader["AuthorName"].ToString();
+                authors.Surname = reader["AuthotLastname"].ToString();
+                authors.Nationality = reader["AuthorNationality"].ToString();
+                authors.Genre = reader["Genre"].ToString();
+                authors.Birthdate = Convert.ToDateTime(reader["Birthdate"].ToString());
+                authors.DateDeleted = reader["DateDeleted"].ToString();
+                authors.DateUpdated = reader["DateUpdated"].ToString();
+                authors.DateInserted = reader["DateInserted"].ToString();
                 listAuthors.Add(authors);
                
             }

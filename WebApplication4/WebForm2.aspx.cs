@@ -58,18 +58,21 @@ namespace WebApplication4
         {
             Connection connection = new Connection();
             connection.Create_Connection();
-            SqlCommand cmd = new SqlCommand("InsertIntoDbo", conn );
+            SqlCommand cmd = new SqlCommand("InsertAuthors", conn );
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
             cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
             cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
             cmd.Parameters.AddWithValue("@Genre", Genre.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
+            cmd.Parameters.AddWithValue("@DateDeleted", "deded");
+            cmd.Parameters.AddWithValue("@DateUpdated", "deded");
+            cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
             cmd.ExecuteNonQuery();
             conn.Close();
             AuthorGrid.DataBind();
             GridView1.DataBind();
-          //  Response.Redirect("WebForm2");
+            Response.Redirect("WebForm2");
         }
 
 
@@ -81,7 +84,7 @@ namespace WebApplication4
                 {
                     string id = e.Row.Cells[0].Text; // Get the id to be deleted
                                                      //cast the ShowDeleteButton link to linkbutton
-                    LinkButton lb = (LinkButton)e.Row.Cells[6].Controls[2];
+                    LinkButton lb = (LinkButton)e.Row.Cells[9].Controls[2];
                     if (lb != null)
                     {
                         //attach the JavaScript function with the ID as the paramter

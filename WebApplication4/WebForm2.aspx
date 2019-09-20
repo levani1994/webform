@@ -60,17 +60,21 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
        
 
 
-            <asp:GridView  OnRowDataBound="AuthorGrid_RowDataBound" DataKeyNames="ID" ID="GridView1" runat="server" EnableViewState="true" AutoGenerateColumns="False" 
+            <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 DataSourceID="ObjectDataSource1" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="800px" BorderStyle="None" 
-                BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="id" ReadOnly="true" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                    <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
-                    <asp:BoundField DataField="nationality" HeaderText="nationality" SortExpression="nationality" />
-                    <asp:BoundField DataField="genre" HeaderText="genre" SortExpression="genre" />
-                    <asp:BoundField DataField="birthdate" HeaderText="birthdate" SortExpression="birthdate" />
-                    <asp:CommandField ShowDeleteButton="True"  ShowEditButton="True" />
+                    
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                    <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
+                    <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
+                    <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
+                    <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
+                    <asp:BoundField DataField="DateDeleted" HeaderText="DateDeleted" SortExpression="DateDeleted" />
+                    <asp:BoundField DataField="DateUpdated" HeaderText="DateUpdated" SortExpression="DateUpdated" />
+                    <asp:BoundField DataField="DateInserted" HeaderText="DateInserted" SortExpression="DateInserted" />
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -88,6 +92,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 SelectMethod="GetAllAuthors"
                 DeleteMethod="DeleteAuthor" 
                 UpdateMethod="UpdateAuthor"
+          
                 TypeName="WebApplication4.LibraryDataAccessLayer">
                  
                 <DeleteParameters>
@@ -100,6 +105,9 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:Parameter Name="nationality" Type="String" />
                     <asp:Parameter Name="genre" Type="String" />
                     <asp:Parameter Name="birthdate" Type="String" />
+                    <asp:Parameter Name="DateDeleted" Type="String" />
+                    <asp:Parameter Name="DateUpdated" Type="String" />
+                    <asp:Parameter Name="DateInserted" Type="String" />
                     
                 </UpdateParameters>
                     
@@ -120,13 +128,19 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
 
+                
+
                 <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                 <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
                 <asp:BoundField DataField="AuthotLastname" HeaderText="AuthotLastname" SortExpression="AuthotLastname" />
                 <asp:BoundField DataField="AuthorNationality" HeaderText="AuthorNationality" SortExpression="AuthorNationality" />
                 <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
                 <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
+                <asp:BoundField DataField="DateDeleted" HeaderText="DateDeleted" SortExpression="DateDeleted" />
+                <asp:BoundField DataField="DateUpdated" HeaderText="DateUpdated" SortExpression="DateUpdated" />
+                <asp:BoundField DataField="DateInserted" HeaderText="DateInserted" SortExpression="DateInserted" />
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -146,16 +160,12 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:levaniDBConnectionString %>"
             DeleteCommand="DeleteUser @ID"
             SelectCommand="getAllAuthors"
-            UpdateCommand="UpdateAuthors @AuthorName,  @AuthotLastname,  @AuthorNationality,  @Genre,  @Birthdate,  @ID"> 
+            UpdateCommand="UpdateAuthors @AuthorName,  @AuthotLastname,  @AuthorNationality,  @Genre,  @Birthdate,  @ID" InsertCommand="DeleteUser" InsertCommandType="StoredProcedure" SelectCommandType="StoredProcedure"> 
             <DeleteParameters>
-                <asp:Parameter Name="BookID" Type="Int32" />
+                <asp:Parameter Name="ID" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="AuthorName" Type="String" />
-                <asp:Parameter Name="AuthotLastname" Type="String" />
-                <asp:Parameter Name="AuthorNationality" Type="String" />
-                <asp:Parameter Name="Genre" Type="String" />
-                <asp:Parameter Name="Birthdate" Type="String" />
+                <asp:Parameter Name="BookID" Type="Int32" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="AuthorName" Type="String" />
