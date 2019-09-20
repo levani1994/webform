@@ -25,25 +25,20 @@ namespace WebApplication4
             //    DateTime.Now.ToString());
             lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
         }
- //viewstate  gridview databinding  using connect c#
-//objectdata source
-//calke klasi bazastan kavshiristvis da bazidan monacemebis wamosagebad
-        //language change
+            //viewstate  gridview databinding  using connect c#
+           //objectdata source
+          //calke klasi bazastan kavshiristvis da bazidan monacemebis wamosagebad
+         //language change
         protected override void InitializeCulture()
         {
-
-
             HttpCookie cookie = Request.Cookies["language"];
-           
             if (cookie != null)
             {
-                Culture = cookie.Value.ToString();
-                UICulture = cookie.Value.ToString();
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
-
-
-                base.InitializeCulture();
+               Culture = cookie.Value.ToString();
+               UICulture = cookie.Value.ToString();
+               Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
+               Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
+               base.InitializeCulture();
             }
         }
         
@@ -53,7 +48,6 @@ namespace WebApplication4
             cookie.Value = DropDownList.SelectedValue;
             cookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(cookie);
-            //Session["lang"] = DropDownList.SelectedValue;
             Response.Redirect("WebForm2.aspx");
         }
 
@@ -64,7 +58,7 @@ namespace WebApplication4
         {
             Connection connection = new Connection();
             connection.Create_Connection();
-            SqlCommand cmd = new SqlCommand("InsertIntoDbo",  conn );
+            SqlCommand cmd = new SqlCommand("InsertIntoDbo", conn );
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
             cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
@@ -72,10 +66,9 @@ namespace WebApplication4
             cmd.Parameters.AddWithValue("@Genre", Genre.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
             cmd.ExecuteNonQuery();
-          
             conn.Close();
-        
-           AuthorGrid.DataBind();
+            AuthorGrid.DataBind();
+            GridView1.DataBind();
           //  Response.Redirect("WebForm2");
         }
 
@@ -98,6 +91,9 @@ namespace WebApplication4
             }
         }
 
-     
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
