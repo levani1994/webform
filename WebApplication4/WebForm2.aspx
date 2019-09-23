@@ -58,24 +58,24 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </p>
     
        
+       
 
-
-            <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="GridView1" runat="server" AutoGenerateColumns="False" 
-                DataSourceID="ObjectDataSource1" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="800px" BorderStyle="None" 
-                BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
+            <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="GridView1" runat="server" AutoGenerateColumns="False"   DataKeyNames="ID"
+                DataSourceID="ObjectDataSource1" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="900px" BorderStyle="None" 
+                BorderWidth="1px" CellPadding="3"  AllowPaging="True"  >
                 <Columns>
                     
-                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="true" />
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                     <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
                     <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
-                    <asp:BoundField DataField="DateDeleted" HeaderText="DateDeleted" SortExpression="DateDeleted" />
-                    <asp:BoundField DataField="DateUpdated" HeaderText="DateUpdated" SortExpression="DateUpdated" />
-                    <asp:BoundField DataField="DateInserted" HeaderText="DateInserted" SortExpression="DateInserted" />
+                    <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor" />
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
+                    
+                   
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -96,18 +96,20 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 TypeName="WebApplication4.LibraryDataAccessLayer">
                  
                 <DeleteParameters>
-                    <asp:Parameter  Name="id" Type="Int32" />
+                    <asp:Parameter  Name="ID" Type="Int32" />
+                   
                 </DeleteParameters>
+
                 <UpdateParameters >
-                    <asp:Parameter Name="id" Type="Int32" />
+                    
                     <asp:Parameter Name="name" Type="String" />
                     <asp:Parameter Name="surname" Type="String" />
                     <asp:Parameter Name="nationality" Type="String" />
                     <asp:Parameter Name="genre" Type="String" />
                     <asp:Parameter Name="birthdate" Type="String" />
-                    <asp:Parameter Name="DateDeleted" Type="String" />
-                    <asp:Parameter Name="DateUpdated" Type="String" />
-                    <asp:Parameter Name="DateInserted" Type="String" />
+                    <asp:Parameter Name="id" Type="Int32" />
+                    <asp:Parameter Name="AllowAuthor" Type="boolean" />
+                
                     
                 </UpdateParameters>
                     
@@ -121,7 +123,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
        
 
 
-        
+      <%--  
         <asp:GridView ID="AuthorGrid" OnRowDataBound="AuthorGrid_RowDataBound" runat="server" AutoGenerateColumns="False"
             CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" GridLines="Vertical"  Height="100px" Width="800px"
             AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" >
@@ -136,9 +138,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 <asp:BoundField DataField="AuthorNationality" HeaderText="AuthorNationality" SortExpression="AuthorNationality" />
                 <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
                 <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
-                <asp:BoundField DataField="DateDeleted" HeaderText="DateDeleted" SortExpression="DateDeleted" />
-                <asp:BoundField DataField="DateUpdated" HeaderText="DateUpdated" SortExpression="DateUpdated" />
-                <asp:BoundField DataField="DateInserted" HeaderText="DateInserted" SortExpression="DateInserted" />
+             
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 
             </Columns>
@@ -178,7 +178,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </asp:SqlDataSource>
 
 
-
+--%>
 
         
 
