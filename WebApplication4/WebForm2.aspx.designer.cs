@@ -13,13 +13,13 @@ namespace WebApplication4 {
     public partial class WebForm2 {
         
         /// <summary>
-        /// form2 control.
+        /// Author_list control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Author_list;
         
         /// <summary>
         /// DropDownList control.
@@ -67,15 +67,6 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Nationality;
         
         /// <summary>
-        /// Genre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Genre;
-        
-        /// <summary>
         /// Birthdate control.
         /// </summary>
         /// <remarks>
@@ -94,21 +85,84 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.Button Add_button;
         
         /// <summary>
-        /// GridView1 control.
+        /// Author_GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView Author_GridView;
         
         /// <summary>
-        /// ObjectDataSource1 control.
+        /// DataFromLibrary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource DataFromLibrary;
+        
+        /// <summary>
+        /// BookName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BookName;
+        
+        /// <summary>
+        /// BookGenre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BookGenre;
+        
+        /// <summary>
+        /// BookDescribtion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BookDescribtion;
+        
+        /// <summary>
+        /// AuthorNamesDropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList AuthorNamesDropdown;
+        
+        /// <summary>
+        /// Book_Add control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Book_Add;
+        
+        /// <summary>
+        /// DataFromBooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource DataFromBooks;
+        
+        /// <summary>
+        /// AuthorNames control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource AuthorNames;
     }
 }

@@ -11,7 +11,6 @@ namespace WebApplication4
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Nationality { get; set; }
-        public string Genre { get; set; }
         public DateTime Birthdate { get; set; }
         public string DateDeleted { get; set; }
         public string DateUpdated { get; set; }
@@ -21,3 +20,4 @@ namespace WebApplication4
 
     }
 }
+

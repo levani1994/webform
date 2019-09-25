@@ -16,19 +16,10 @@ namespace WebApplication4
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //{
-
-            //}
-            //Thread.Sleep(5000);
-            //Response.Write("this page was generated and cached at:" +
-            //    DateTime.Now.ToString());
-            lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
+         lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
         }
-            //viewstate  gridview databinding  using connect c#
-           //objectdata source
-          //calke klasi bazastan kavshiristvis da bazidan monacemebis wamosagebad
-         //language change
+            
+      //language coockies
         protected override void InitializeCulture()
         {
             HttpCookie cookie = Request.Cookies["language"];
@@ -41,7 +32,7 @@ namespace WebApplication4
                base.InitializeCulture();
             }
         }
-        
+           //language change
         protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             HttpCookie cookie = new HttpCookie("language");
@@ -52,30 +43,59 @@ namespace WebApplication4
         }
 
 
-
-        //get users from sql
+        //insert authors in database
         protected void AddButton(object sender, EventArgs e)
         {
             Connection connection = new Connection();
             connection.Create_Connection();
-            
-            SqlCommand cmd = new SqlCommand("InsertAuthors", conn );
+            SqlCommand cmd = new SqlCommand("InsertAuthors", conn);
             cmd.CommandType = CommandType.StoredProcedure;
+            if (Name.Text == String.Empty || Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
+            {
+                Response.Redirect("WebForm2");
+            }
+            else { 
             cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
             cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
             cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
-            cmd.Parameters.AddWithValue("@Genre", Genre.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
             cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
             cmd.Parameters.AddWithValue("@AllowAuthor", true);
             cmd.ExecuteNonQuery();
             conn.Close();
-           
-            GridView1.DataBind();
+            Author_GridView.DataBind();
             Response.Redirect("WebForm2");
+            }
+           
         }
 
 
+        //insert books in database
+        public void AddBook(object sender, EventArgs e)
+        {
+            Connection connection = new Connection();
+            connection.Create_Connection();
+            SqlCommand cmd = new SqlCommand("InsertBook", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            if (BookName.Text == String.Empty || BookGenre.Text == string.Empty || BookDescribtion.Text== string.Empty)
+            {
+                Response.Redirect("WebForm2");
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@BookName", BookName.Text);
+                cmd.Parameters.AddWithValue("@BookGenre", BookGenre.Text);
+                cmd.Parameters.AddWithValue("@BookDescribtion", BookDescribtion.Text);
+                cmd.Parameters.AddWithValue("@BookAuthor", AuthorNamesDropdown.SelectedValue);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                Author_GridView.DataBind();
+                Response.Redirect("WebForm2");
+            }
+        }
+
+        
+        //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowState != DataControlRowState.Edit) // check for RowState
@@ -84,7 +104,7 @@ namespace WebApplication4
                 {
                     string id = e.Row.Cells[0].Text; // Get the id to be deleted
                                                      //cast the ShowDeleteButton link to linkbutton
-                    LinkButton lb = (LinkButton)e.Row.Cells[7].Controls[2];
+                    LinkButton lb = (LinkButton)e.Row.Cells[6].Controls[2];
                     if (lb != null)
                     {
                         //attach the JavaScript function with the ID as the paramter
@@ -94,6 +114,5 @@ namespace WebApplication4
             }
         }
 
-       
     }
 }

@@ -20,7 +20,7 @@
 <body>
    
 
-    <form id="form2" runat="server">
+    <form id="Author_list" runat="server">
             <%--  <asp:Button ID="btnconfirm" runat="server" Font-Bold="True" ForeColor="Red" Style="z-index: 101;
 left: 272px; position: absolute; top: 208px" Text="Confrimation MsgBox"
 OnClientClick =" return confirm_meth()" Width="160px" />--%>
@@ -35,20 +35,22 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
         <p>
         <asp:TextBox ID="Name"  meta:resourcekey="Name" runat="server"></asp:TextBox>
+
         </p>
          
     
         <p>
             <asp:TextBox ID="Surname"  meta:resourcekey="Surname" runat="server"></asp:TextBox>
+
         </p>
         <p>
             <asp:TextBox ID="Nationality"  meta:resourcekey="Nationality" runat="server"></asp:TextBox>
+
         </p>
-        <p>
-            <asp:TextBox ID="Genre"  meta:resourcekey="Genre" runat="server"></asp:TextBox>
-        </p>
+       
          <p>
             <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server"></asp:TextBox>
+
         </p>
 
         <p>
@@ -60,8 +62,8 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
        
        
 
-            <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="GridView1" runat="server" AutoGenerateColumns="False"   DataKeyNames="ID"
-                DataSourceID="ObjectDataSource1" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="900px" BorderStyle="None" 
+            <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="Author_GridView" runat="server" AutoGenerateColumns="False"   DataKeyNames="ID"
+                DataSourceID="DataFromLibrary" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="900px" BorderStyle="None" 
                 BorderWidth="1px" CellPadding="3"  AllowPaging="True"  >
                 <Columns>
                     
@@ -69,7 +71,6 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
-                    <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
                     <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
                     <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor" />
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -88,7 +89,8 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
        
-            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+          
+            <asp:ObjectDataSource ID="DataFromLibrary" runat="server" 
                 SelectMethod="GetAllAuthors"
                 DeleteMethod="DeleteAuthor" 
                 UpdateMethod="UpdateAuthor"
@@ -105,10 +107,10 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:Parameter Name="name" Type="String" />
                     <asp:Parameter Name="surname" Type="String" />
                     <asp:Parameter Name="nationality" Type="String" />
-                    <asp:Parameter Name="genre" Type="String" />
+                 
                     <asp:Parameter Name="birthdate" Type="String" />
                     <asp:Parameter Name="id" Type="Int32" />
-                    <asp:Parameter Name="AllowAuthor" Type="boolean" />
+                    <asp:Parameter Name="allowAuthor" Type="boolean" />
                 
                     
                 </UpdateParameters>
@@ -121,7 +123,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             
       
        
-
+     
 
       <%--  
         <asp:GridView ID="AuthorGrid" OnRowDataBound="AuthorGrid_RowDataBound" runat="server" AutoGenerateColumns="False"
@@ -185,7 +187,71 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
 
 
+        <p>
+            <asp:TextBox ID="BookName"  meta:resourcekey="bookName" runat="server"></asp:TextBox>
+          
+        </p>
+         
+        <p>
+            <asp:TextBox ID="BookGenre"  meta:resourcekey="bookGenre" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:TextBox ID="BookDescribtion"  meta:resourcekey="bookDescribtion" runat="server"></asp:TextBox>
+
+        </p>
+            <p>
+              <asp:DropDownList ID="AuthorNamesDropdown" runat="server" DataSourceID="AuthorNames" DataTextField="Name" DataValueField="Name">
+                       <asp:ListItem Text="choose a author" />
+            </asp:DropDownList>
+        </p>
+
+        
+            <p>
+                <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook"  />
+           </p>
        
+
+
+         <asp:gridview runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+             <Columns>
+                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                 <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                 <asp:BoundField DataField="BookGenre" HeaderText="BookGenre" SortExpression="BookGenre" />
+                 <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
+                 <asp:BoundField DataField="BookAuthor" HeaderText="BookAuthor" SortExpression="BookAuthor" />
+             </Columns>
+             <FooterStyle BackColor="White" ForeColor="#000066" />
+             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+             <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+             <RowStyle ForeColor="#000066" />
+             <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+             <SortedAscendingCellStyle BackColor="#F1F1F1" />
+             <SortedAscendingHeaderStyle BackColor="#007DBB" />
+             <SortedDescendingCellStyle BackColor="#CAC9C9" />
+             <SortedDescendingHeaderStyle BackColor="#00547E" />
+            </asp:gridview>
+
+        
+ <asp:ObjectDataSource ID="DataFromBooks" runat="server"
+     SelectMethod="GetBooks" 
+     TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+
+
+
+ </asp:ObjectDataSource>
+
+
+         <asp:ObjectDataSource ID="AuthorNames" runat="server"
+     SelectMethod="GetAuthorNames" 
+     TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+
+
+
+ </asp:ObjectDataSource>
+
+
+
+
     </form>
 </body>
 </html>

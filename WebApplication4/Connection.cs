@@ -9,6 +9,8 @@ namespace WebApplication4
 {
     public  class Connection : System.Web.UI.Page
     {
+
+        //datanase connection function
         public static SqlConnection conn = null;
         public void Create_Connection()
         {

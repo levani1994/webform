@@ -118,10 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add_button.Text" xml:space="preserve">
-    <value>Add</value>
+    <value>Add author</value>
   </data>
   <data name="Birthdate.placeholder" xml:space="preserve">
     <value>Birthdate</value>
+  </data>
+  <data name="BookAuthor.placeholder" xml:space="preserve">
+    <value>Book author</value>
+  </data>
+  <data name="BookDescribtion.placeholder" xml:space="preserve">
+    <value>Book describtion</value>
+  </data>
+  <data name="BookGenre.placeholder" xml:space="preserve">
+    <value>Book genre</value>
+  </data>
+  <data name="BookName.placeholder" xml:space="preserve">
+    <value>Book name</value>
+  </data>
+  <data name="Book_Add.Text" xml:space="preserve">
+    <value>Add book</value>
   </data>
   <data name="Genre.placeholder" xml:space="preserve">
     <value>Genre</value>
