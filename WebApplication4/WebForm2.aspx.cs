@@ -44,7 +44,7 @@ namespace WebApplication4
 
 
         //insert authors in database
-        protected void AddButton(object sender, EventArgs e)
+        protected void AddAuthor(object sender, EventArgs e)
         {
             Connection connection = new Connection();
             connection.Create_Connection();
@@ -59,6 +59,7 @@ namespace WebApplication4
             cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
             cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
+            cmd.Parameters.AddWithValue("@PersonalID", PersonalID.Text);
             cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
             cmd.Parameters.AddWithValue("@AllowAuthor", true);
             cmd.ExecuteNonQuery();
@@ -77,16 +78,17 @@ namespace WebApplication4
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertBook", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            if (BookName.Text == String.Empty || BookGenre.Text == string.Empty || BookDescribtion.Text== string.Empty)
+            if (BookName.Text == String.Empty || BookDescribtion.Text == string.Empty || AuthorNamesDropdown.SelectedValue == null || GenresDropdown.SelectedValue == null)
             {
                 Response.Redirect("WebForm2");
             }
             else
             {
                 cmd.Parameters.AddWithValue("@BookName", BookName.Text);
-                cmd.Parameters.AddWithValue("@BookGenre", BookGenre.Text);
                 cmd.Parameters.AddWithValue("@BookDescribtion", BookDescribtion.Text);
-                cmd.Parameters.AddWithValue("@BookAuthor", AuthorNamesDropdown.SelectedValue);
+                cmd.Parameters.AddWithValue("@ReleaseDate", Convert.ToInt32(BookReleaseDate.Text));
+                cmd.Parameters.AddWithValue("@AuthorID", AuthorNamesDropdown.SelectedValue);
+                cmd.Parameters.AddWithValue("@GenreID", GenresDropdown.SelectedValue);
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 Author_GridView.DataBind();
@@ -94,7 +96,7 @@ namespace WebApplication4
             }
         }
 
-        
+
         //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -104,7 +106,7 @@ namespace WebApplication4
                 {
                     string id = e.Row.Cells[0].Text; // Get the id to be deleted
                                                      //cast the ShowDeleteButton link to linkbutton
-                    LinkButton lb = (LinkButton)e.Row.Cells[6].Controls[2];
+                    LinkButton lb = (LinkButton)e.Row.Cells[7].Controls[2];
                     if (lb != null)
                     {
                         //attach the JavaScript function with the ID as the paramter
@@ -114,5 +116,14 @@ namespace WebApplication4
             }
         }
 
+        protected void AuthorNames_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+        protected void DataFromLibrary_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
+
+        }
     }
 }

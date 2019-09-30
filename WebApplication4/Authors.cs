@@ -16,6 +16,7 @@ namespace WebApplication4
         public string DateUpdated { get; set; }
         public string DateInserted { get; set; }
         public Boolean AllowAuthor { get; set; }
+        public string    PersonalID { get; set; }
 
 
     }

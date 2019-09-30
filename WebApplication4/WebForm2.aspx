@@ -65,8 +65,13 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </p>
 
         <p>
+            <asp:TextBox ID="PersonalID" meta:resourcekey="PersonalID"  runat="server"></asp:TextBox>
+
+        </p>
+
+        <p>
             
-            <asp:Button ID="Add_button" runat="server" OnClick="AddButton"  meta:resourceKey="Add_button" />
+            <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor"  meta:resourceKey="Add_button" />
         
         </p>
     
@@ -83,6 +88,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                     <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
+                    <asp:BoundField DataField="PersonalID" HeaderText="PersonalID" SortExpression="PersonalID" />
                     <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor" />
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
@@ -102,11 +108,11 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
        
           
             <asp:ObjectDataSource ID="DataFromLibrary" runat="server" 
-                SelectMethod="GetAllAuthors"
+                SelectMethod="GetAuthors"
                 DeleteMethod="DeleteAuthor" 
                 UpdateMethod="UpdateAuthor"
           
-                TypeName="WebApplication4.LibraryDataAccessLayer">
+                TypeName="WebApplication4.LibraryDataAccessLayer" OnSelecting="DataFromLibrary_Selecting">
                  
                 <DeleteParameters>
                     <asp:Parameter  Name="ID" Type="Int32" />
@@ -202,16 +208,22 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             <asp:TextBox ID="BookName"  meta:resourcekey="bookName" runat="server"></asp:TextBox>
           
         </p>
-         
-        <p>
-            <asp:TextBox ID="BookGenre"  meta:resourcekey="bookGenre" runat="server"></asp:TextBox>
-        </p>
+       
         <p>
             <asp:TextBox ID="BookDescribtion"  meta:resourcekey="bookDescribtion" runat="server"></asp:TextBox>
 
+        </p>  
+         <p>
+            <asp:TextBox ID="BookReleaseDate"  meta:resourcekey="BookReleaseDate" runat="server"></asp:TextBox>
+
+        </p>  
+        <p>
+          <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="GenreNames" DataValueField="ID">
+                       <asp:ListItem Text="choose a author" />
+            </asp:DropDownList>
         </p>
             <p>
-              <asp:DropDownList ID="AuthorNamesDropdown" runat="server" DataSourceID="AuthorNames" DataTextField="Name" DataValueField="Name">
+              <asp:DropDownList ID="AuthorNamesDropdown" runat="server" DataSourceID="AuthorNames" DataTextField="Name" DataValueField="ID">
                        <asp:ListItem Text="choose a author" />
             </asp:DropDownList>
         </p>
@@ -227,9 +239,8 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
              <Columns>
                  <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                  <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
-                 <asp:BoundField DataField="BookGenre" HeaderText="BookGenre" SortExpression="BookGenre" />
                  <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
-                 <asp:BoundField DataField="BookAuthor" HeaderText="BookAuthor" SortExpression="BookAuthor" />
+                 <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate" />
              </Columns>
              <FooterStyle BackColor="White" ForeColor="#000066" />
              <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -253,13 +264,18 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
 
          <asp:ObjectDataSource ID="AuthorNames" runat="server"
-     SelectMethod="GetAuthorNames" 
-     TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+          SelectMethod="GetAuthorNames" 
+           TypeName="WebApplication4.LibraryDataAccessLayer">
+           </asp:ObjectDataSource>
+
+
+         <asp:ObjectDataSource ID="Genres" runat="server"
+          SelectMethod="GetGenres" 
+          TypeName="WebApplication4.LibraryDataAccessLayer">
 
 
 
  </asp:ObjectDataSource>
-
 
 
 

@@ -12,21 +12,22 @@ namespace WebApplication4
 {    public class LibraryDataAccessLayer : Connection
     {
         //get authors from database
-        public static List<Authors> GetAllAuthors()
+        public static List<Authors> GetAuthors()
         {     
             List<Authors> listAuthors = new List<Authors>();
             Connection connection = new Connection();
             connection.Create_Connection();
-            SqlCommand cmd = new SqlCommand("getAllAuthors", conn);
+            SqlCommand cmd = new SqlCommand("getAuthors", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 Authors authors = new Authors();
                 authors.ID = Convert.ToInt32(reader["ID"]);
                 authors.Name = reader["AuthorName"].ToString();
-                authors.Surname = reader["AuthotLastname"].ToString();
+                authors.Surname = reader["AuthorLastname"].ToString();
                 authors.Nationality = reader["AuthorNationality"].ToString();
                 authors.Birthdate = Convert.ToDateTime(reader["Birthdate"].ToString());
+                authors.PersonalID = reader["PersonalID"].ToString();
                 authors.AllowAuthor = Convert.ToBoolean(reader["AllowAuthor"]);
                 listAuthors.Add(authors);
             }
@@ -47,9 +48,9 @@ namespace WebApplication4
                 Books books = new Books();
                 books.Id = Convert.ToInt32(reader["Id"]);
                 books.BookName = reader["BookName"].ToString();
-                books.BookGenre = reader["BookGenre"].ToString();
+               
                 books.BookDescribtion = reader["BookDescribtion"].ToString();
-                books.BookAuthor = reader["BookAuthor"].ToString();
+              
                 listBooks.Add(books);
             }
             conn.Close();
@@ -73,6 +74,24 @@ namespace WebApplication4
             conn.Close();
             return listAuthors;
         }
+
+        public static List<Genres> GetGenres()
+        {
+            List<Genres> listGenres = new List<Genres>();
+            Connection connection = new Connection();
+            connection.Create_Connection();
+            SqlCommand cmd = new SqlCommand("GetGenres", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Genres genres = new Genres();
+                genres.GenreNames = reader["Genre"].ToString();
+                listGenres.Add(genres);
+            }
+            conn.Close();
+            return listGenres;
+        }
+
 
 
         //delete author from database
@@ -105,6 +124,9 @@ namespace WebApplication4
             cmdUpdate.ExecuteNonQuery();
             conn.Close();
         }
+
+        
+
     }
 }
 

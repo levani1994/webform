@@ -9,9 +9,9 @@ namespace WebApplication4
     {
         public int Id { get; set; }
         public string BookName { get; set; }
-        public string BookGenre { get; set; }
+      
         public string BookDescribtion { get; set; }
-        public string BookAuthor { get; set; }
+        public int ReleaseDate { get; set; }
 
     }
 }

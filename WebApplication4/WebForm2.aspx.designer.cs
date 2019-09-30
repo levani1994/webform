@@ -76,6 +76,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Birthdate;
         
         /// <summary>
+        /// PersonalID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PersonalID;
+        
+        /// <summary>
         /// Add_button control.
         /// </summary>
         /// <remarks>
@@ -112,15 +121,6 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox BookName;
         
         /// <summary>
-        /// BookGenre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BookGenre;
-        
-        /// <summary>
         /// BookDescribtion control.
         /// </summary>
         /// <remarks>
@@ -128,6 +128,24 @@ namespace WebApplication4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BookDescribtion;
+        
+        /// <summary>
+        /// BookReleaseDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BookReleaseDate;
+        
+        /// <summary>
+        /// GenresDropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList GenresDropdown;
         
         /// <summary>
         /// AuthorNamesDropdown control.
@@ -164,5 +182,14 @@ namespace WebApplication4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource AuthorNames;
+        
+        /// <summary>
+        /// Genres control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource Genres;
     }
 }
