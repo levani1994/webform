@@ -135,6 +135,9 @@
   <data name="BookName.placeholder" xml:space="preserve">
     <value>Book name</value>
   </data>
+  <data name="BookReleaseDate.placeholder" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
   <data name="Book_Add.Text" xml:space="preserve">
     <value>Add book</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="Nationality.placeholder" xml:space="preserve">
     <value>Author nationality</value>
+  </data>
+  <data name="PersonalID.placeholder" xml:space="preserve">
+    <value>Personal ID</value>
   </data>
   <data name="Surname.placeholder" xml:space="preserve">
     <value>Author surname</value>

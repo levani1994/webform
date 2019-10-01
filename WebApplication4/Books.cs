@@ -13,5 +13,11 @@ namespace WebApplication4
         public string BookDescribtion { get; set; }
         public int ReleaseDate { get; set; }
 
+        public string AuthorName { get; set; }
+
+        public string Genre { get; set; }
+
+
+
     }
 }

@@ -56,7 +56,7 @@ namespace WebApplication4
             }
             else { 
             cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
-            cmd.Parameters.AddWithValue("@AuthotLastname", Surname.Text);
+            cmd.Parameters.AddWithValue("@AuthorLastname", Surname.Text);
             cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
             cmd.Parameters.AddWithValue("@PersonalID", PersonalID.Text);
@@ -116,14 +116,5 @@ namespace WebApplication4
             }
         }
 
-        protected void AuthorNames_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
-        {
-
-        }
-
-        protected void DataFromLibrary_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
-        {
-
-        }
     }
 }

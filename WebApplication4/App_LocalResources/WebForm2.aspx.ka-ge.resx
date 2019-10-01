@@ -132,6 +132,9 @@
   <data name="BookName.placeholder" xml:space="preserve">
     <value>წიგნის სახელი</value>
   </data>
+  <data name="BookReleaseDate.placeholder" xml:space="preserve">
+    <value>გამოშვების თარიღი</value>
+  </data>
   <data name="Book_Add.Text" xml:space="preserve">
     <value>წიგნის დამატება</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Nationality.placeholder" xml:space="preserve">
     <value>წარმოშობა</value>
+  </data>
+  <data name="PersonalID.placeholder" xml:space="preserve">
+    <value>პირადი ნომერი</value>
   </data>
   <data name="Surname.placeholder" xml:space="preserve">
     <value>ავტორის გვარი</value>

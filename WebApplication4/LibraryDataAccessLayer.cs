@@ -46,11 +46,13 @@ namespace WebApplication4
             while (reader.Read())
             {
                 Books books = new Books();
-                books.Id = Convert.ToInt32(reader["Id"]);
+                books.Id = Convert.ToInt32(reader["ID"]);
                 books.BookName = reader["BookName"].ToString();
-               
                 books.BookDescribtion = reader["BookDescribtion"].ToString();
-              
+                books.ReleaseDate = Convert.ToInt32(reader["ReleaseDate"]);
+                books.AuthorName = reader["AuthorName"].ToString();
+                books.Genre = reader["Genre"].ToString();
+               
                 listBooks.Add(books);
             }
             conn.Close();
@@ -68,6 +70,7 @@ namespace WebApplication4
             while (reader.Read())
             {
               Authors authors = new Authors();
+              authors.ID = Convert.ToInt32(reader["ID"]);
               authors.Name = reader["AuthorName"].ToString();
               listAuthors.Add(authors);
             }
@@ -85,14 +88,13 @@ namespace WebApplication4
             while (reader.Read())
             {
                 Genres genres = new Genres();
+                genres.ID = Convert.ToInt32(reader["ID"]);
                 genres.GenreNames = reader["Genre"].ToString();
                 listGenres.Add(genres);
             }
             conn.Close();
             return listGenres;
         }
-
-
 
         //delete author from database
         public static void DeleteAuthor(int id)
@@ -101,32 +103,31 @@ namespace WebApplication4
             connection.Create_Connection();
             SqlCommand cmdDelete = new SqlCommand("DeleteAuthor", conn);
             cmdDelete.CommandType = CommandType.StoredProcedure;
-            cmdDelete.Parameters.AddWithValue("@BookID", id);
+            cmdDelete.Parameters.AddWithValue("@ID", id);
             cmdDelete.Parameters.AddWithValue("@DateDeleted", DateTime.Now.ToString());
             cmdDelete.ExecuteNonQuery();
             conn.Close();
         }
 
         //update author in database
-        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, bool allowAuthor)
+        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, bool allowAuthor, string personalID)
         {
             Connection connection = new Connection();
             connection.Create_Connection();
             SqlCommand cmdUpdate = new SqlCommand("UpdateAuthors", conn);
             cmdUpdate.CommandType = CommandType.StoredProcedure;
             cmdUpdate.Parameters.AddWithValue("@AuthorName", name);
-            cmdUpdate.Parameters.AddWithValue("@AuthotLastname", surname);
+            cmdUpdate.Parameters.AddWithValue("@AuthorLastname", surname);
             cmdUpdate.Parameters.AddWithValue("@AuthorNationality", nationality);
             cmdUpdate.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(birthdate));
             cmdUpdate.Parameters.AddWithValue("@ID", id);
             cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
+            cmdUpdate.Parameters.AddWithValue("@PersonalID", personalID);
             cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
             cmdUpdate.ExecuteNonQuery();
             conn.Close();
         }
-
-        
-
+     
     }
 }
 

@@ -1,15 +1,4 @@
-﻿
-
-
-
-
-
-
-
-
-
-
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication4.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication4.WebForm2" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%--<%@ OutputCache Duration="60" VaryByParam="none" %>--%>
@@ -47,11 +36,17 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         <p>
         <asp:TextBox ID="Name"  meta:resourcekey="Name" runat="server"></asp:TextBox>
 
-        </p>
-         
-    
+       
+        <asp:RequiredFieldValidator ID="validator" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ ავტორი სახელი" runat="server">
+
+        </asp:RequiredFieldValidator>
+     </p>
         <p>
             <asp:TextBox ID="Surname"  meta:resourcekey="Surname" runat="server"></asp:TextBox>
+            
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ ავტორი სახელი" runat="server">
+
+        </asp:RequiredFieldValidator>
 
         </p>
         <p>
@@ -71,7 +66,11 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
         <p>
             
-            <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor"  meta:resourceKey="Add_button" />
+            <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor" 
+                ValidationGroup="val1"
+                text="validate"
+                CausesValidation="true"
+                meta:resourceKey="Add_button" />
         
         </p>
     
@@ -112,7 +111,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 DeleteMethod="DeleteAuthor" 
                 UpdateMethod="UpdateAuthor"
           
-                TypeName="WebApplication4.LibraryDataAccessLayer" OnSelecting="DataFromLibrary_Selecting">
+                TypeName="WebApplication4.LibraryDataAccessLayer" >
                  
                 <DeleteParameters>
                     <asp:Parameter  Name="ID" Type="Int32" />
@@ -124,10 +123,10 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:Parameter Name="name" Type="String" />
                     <asp:Parameter Name="surname" Type="String" />
                     <asp:Parameter Name="nationality" Type="String" />
-                 
                     <asp:Parameter Name="birthdate" Type="String" />
                     <asp:Parameter Name="id" Type="Int32" />
                     <asp:Parameter Name="allowAuthor" Type="boolean" />
+                    <asp:Parameter Name="personalID" Type="String" />
                 
                     
                 </UpdateParameters>
@@ -203,7 +202,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
 
 
-
+        
         <p>
             <asp:TextBox ID="BookName"  meta:resourcekey="bookName" runat="server"></asp:TextBox>
           
@@ -217,17 +216,18 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             <asp:TextBox ID="BookReleaseDate"  meta:resourcekey="BookReleaseDate" runat="server"></asp:TextBox>
 
         </p>  
-        <p>
-          <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="GenreNames" DataValueField="ID">
-                       <asp:ListItem Text="choose a author" />
-            </asp:DropDownList>
-        </p>
+
             <p>
               <asp:DropDownList ID="AuthorNamesDropdown" runat="server" DataSourceID="AuthorNames" DataTextField="Name" DataValueField="ID">
+                 
                        <asp:ListItem Text="choose a author" />
             </asp:DropDownList>
         </p>
-
+           <p>
+          <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="GenreNames" DataValueField="ID">
+                       <asp:ListItem Text="choose a Genre" />
+            </asp:DropDownList>
+        </p>
         
             <p>
                 <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook"  />
@@ -239,6 +239,8 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
              <Columns>
                  <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                  <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                 <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
+                 <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
                  <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
                  <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate" />
              </Columns>
@@ -254,28 +256,22 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             </asp:gridview>
 
         
- <asp:ObjectDataSource ID="DataFromBooks" runat="server"
+     <asp:ObjectDataSource ID="DataFromBooks" runat="server"
      SelectMethod="GetBooks" 
-     TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
-
-
-
- </asp:ObjectDataSource>
+     TypeName="WebApplication4.LibraryDataAccessLayer">
+     </asp:ObjectDataSource>
 
 
          <asp:ObjectDataSource ID="AuthorNames" runat="server"
           SelectMethod="GetAuthorNames" 
-           TypeName="WebApplication4.LibraryDataAccessLayer">
+           TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
            </asp:ObjectDataSource>
 
 
          <asp:ObjectDataSource ID="Genres" runat="server"
           SelectMethod="GetGenres" 
-          TypeName="WebApplication4.LibraryDataAccessLayer">
-
-
-
- </asp:ObjectDataSource>
+          TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+         </asp:ObjectDataSource>
 
 
 
