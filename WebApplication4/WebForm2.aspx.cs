@@ -18,8 +18,8 @@ namespace WebApplication4
         {
          lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
         }
-            
-      //language coockies
+        
+        //language coockies
         protected override void InitializeCulture()
         {
             HttpCookie cookie = Request.Cookies["language"];
@@ -59,7 +59,7 @@ namespace WebApplication4
             cmd.Parameters.AddWithValue("@AuthorLastname", Surname.Text);
             cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
             cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
-            cmd.Parameters.AddWithValue("@PersonalID", PersonalID.Text);
+            cmd.Parameters.AddWithValue("@Email", Email.Text);
             cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
             cmd.Parameters.AddWithValue("@AllowAuthor", true);
             cmd.ExecuteNonQuery();

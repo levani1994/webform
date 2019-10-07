@@ -138,14 +138,14 @@
   <data name="Book_Add.Text" xml:space="preserve">
     <value>წიგნის დამატება</value>
   </data>
+  <data name="Email.placeholder" xml:space="preserve">
+    <value>ელ. ფოსტა</value>
+  </data>
   <data name="Name.placeholder" xml:space="preserve">
     <value>ავტორის სახელი</value>
   </data>
   <data name="Nationality.placeholder" xml:space="preserve">
     <value>წარმოშობა</value>
-  </data>
-  <data name="PersonalID.placeholder" xml:space="preserve">
-    <value>პირადი ნომერი</value>
   </data>
   <data name="Surname.placeholder" xml:space="preserve">
     <value>ავტორის გვარი</value>

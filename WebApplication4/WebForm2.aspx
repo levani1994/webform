@@ -15,16 +15,19 @@
             return false;
         }  
 </script>
-
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+   
 </head>
 <body>
-   
+   <asp:ScriptManager id="ScriptManager" runat="server">
+   </asp:ScriptManager>
 
     <form id="Author_list" runat="server">
             <%--  <asp:Button ID="btnconfirm" runat="server" Font-Bold="True" ForeColor="Red" Style="z-index: 101;
 left: 272px; position: absolute; top: 208px" Text="Confrimation MsgBox"
 OnClientClick =" return confirm_meth()" Width="160px" />--%>
-
+        <asp:T
 
         <asp:DropDownList ID="DropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList_SelectedIndexChanged">
             <asp:ListItem Text="choose a language" />
@@ -35,33 +38,56 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
         <p>
         <asp:TextBox ID="Name"  meta:resourcekey="Name" runat="server"></asp:TextBox>
-
+        
+    <ajaxToolkit:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Name" Format="dd/MM/yyyy" />
+            
+         
        
-        <asp:RequiredFieldValidator ID="validator" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ ავტორი სახელი" runat="server">
+        <asp:RequiredFieldValidator ID="validator" ControlToValidate="Name"  ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
         </asp:RequiredFieldValidator>
-     </p>
+
+      
+        </p>
+
+
         <p>
             <asp:TextBox ID="Surname"  meta:resourcekey="Surname" runat="server"></asp:TextBox>
             
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ ავტორი სახელი" runat="server">
+        <asp:RequiredFieldValidator ID="Validator1" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
         </asp:RequiredFieldValidator>
 
         </p>
+
+
+
         <p>
             <asp:TextBox ID="Nationality"  meta:resourcekey="Nationality" runat="server"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="Validator2" ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
+        </asp:RequiredFieldValidator>
         </p>
        
          <p>
             <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="Validator3" ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
+        </asp:RequiredFieldValidator>
         </p>
 
         <p>
-            <asp:TextBox ID="PersonalID" meta:resourcekey="PersonalID"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="Email" meta:resourcekey="Email"  runat="server"></asp:TextBox>
 
+              <asp:RegularExpressionValidator
+                runat="server" 
+                ID="EmailRegExpValidator" 
+                ErrorMessage="Please enter valid email"
+                ForeColor="Red"
+                ControlToValidate="Email"
+                ValidationGroup="val1"
+                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+             </asp:RegularExpressionValidator>
         </p>
 
         <p>
@@ -87,7 +113,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                     <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
-                    <asp:BoundField DataField="PersonalID" HeaderText="PersonalID" SortExpression="PersonalID" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                     <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor" />
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
@@ -108,29 +134,15 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
           
             <asp:ObjectDataSource ID="DataFromLibrary" runat="server" 
                 SelectMethod="GetAuthors"
-                DeleteMethod="DeleteAuthor" 
-                UpdateMethod="UpdateAuthor"
+                DeleteMethod="DeleteAuthor"
           
-                TypeName="WebApplication4.LibraryDataAccessLayer" >
+                TypeName="WebApplication4.LibraryDataAccessLayer"  >
                  
                 <DeleteParameters>
                     <asp:Parameter  Name="ID" Type="Int32" />
                    
                 </DeleteParameters>
 
-                <UpdateParameters >
-                    
-                    <asp:Parameter Name="name" Type="String" />
-                    <asp:Parameter Name="surname" Type="String" />
-                    <asp:Parameter Name="nationality" Type="String" />
-                    <asp:Parameter Name="birthdate" Type="String" />
-                    <asp:Parameter Name="id" Type="Int32" />
-                    <asp:Parameter Name="allowAuthor" Type="boolean" />
-                    <asp:Parameter Name="personalID" Type="String" />
-                
-                    
-                </UpdateParameters>
-                    
                 
                 
            
@@ -141,62 +153,6 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
        
      
 
-      <%--  
-        <asp:GridView ID="AuthorGrid" OnRowDataBound="AuthorGrid_RowDataBound" runat="server" AutoGenerateColumns="False"
-            CellPadding="3" DataKeyNames="ID" DataSourceID="SqlDataSource1" GridLines="Vertical"  Height="100px" Width="800px"
-            AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" >
-            <AlternatingRowStyle BackColor="#DCDCDC" />
-            <Columns>
-
-                
-
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
-                <asp:BoundField DataField="AuthotLastname" HeaderText="AuthotLastname" SortExpression="AuthotLastname" />
-                <asp:BoundField DataField="AuthorNationality" HeaderText="AuthorNationality" SortExpression="AuthorNationality" />
-                <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
-                <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
-             
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-                
-            </Columns>
-            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#000065" />
-        </asp:GridView>
-      
-       
-
-
-        
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:levaniDBConnectionString %>"
-            DeleteCommand="DeleteUser @ID"
-            SelectCommand="getAllAuthors"
-            UpdateCommand="UpdateAuthors @AuthorName,  @AuthotLastname,  @AuthorNationality,  @Genre,  @Birthdate,  @ID" InsertCommand="DeleteUser" InsertCommandType="StoredProcedure" SelectCommandType="StoredProcedure"> 
-            <DeleteParameters>
-                <asp:Parameter Name="ID" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="BookID" Type="Int32" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="AuthorName" Type="String" />
-                <asp:Parameter Name="AuthotLastname" Type="String" />
-                <asp:Parameter Name="AuthorNationality" Type="String" />
-                <asp:Parameter Name="Genre" Type="String" />
-                <asp:Parameter Name="Birthdate" Type="String" />
-                <asp:Parameter Name="ID" Type="Int32" />
-            </UpdateParameters>
-        </asp:SqlDataSource>
-
-
---%>
 
         
 
@@ -205,16 +161,22 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         
         <p>
             <asp:TextBox ID="BookName"  meta:resourcekey="bookName" runat="server"></asp:TextBox>
-          
+          <asp:RequiredFieldValidator ID="Validator5" ControlToValidate="BookName" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+
+        </asp:RequiredFieldValidator>
         </p>
        
         <p>
             <asp:TextBox ID="BookDescribtion"  meta:resourcekey="bookDescribtion" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="Validator6" ControlToValidate="BookDescribtion" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
+        </asp:RequiredFieldValidator>
         </p>  
          <p>
             <asp:TextBox ID="BookReleaseDate"  meta:resourcekey="BookReleaseDate" runat="server"></asp:TextBox>
+             <asp:RequiredFieldValidator ID="Validator7" ControlToValidate="BookReleaseDate" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
+        </asp:RequiredFieldValidator>
         </p>  
 
             <p>
@@ -230,7 +192,9 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </p>
         
             <p>
-                <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook"  />
+                <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook"    ValidationGroup="val2"
+                text="validate"
+                CausesValidation="true" />
            </p>
        
 
@@ -264,13 +228,13 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
          <asp:ObjectDataSource ID="AuthorNames" runat="server"
           SelectMethod="GetAuthorNames" 
-           TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+           TypeName="WebApplication4.LibraryDataAccessLayer">
            </asp:ObjectDataSource>
 
 
          <asp:ObjectDataSource ID="Genres" runat="server"
           SelectMethod="GetGenres" 
-          TypeName="WebApplication4.LibraryDataAccessLayer" OldValuesParameterFormatString="original_{0}">
+          TypeName="WebApplication4.LibraryDataAccessLayer">
          </asp:ObjectDataSource>
 
 

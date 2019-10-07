@@ -13,6 +13,15 @@ namespace WebApplication4 {
     public partial class WebForm2 {
         
         /// <summary>
+        /// ScriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager;
+        
+        /// <summary>
         /// Author_list control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Name;
         
         /// <summary>
+        /// Calendar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender Calendar1;
+        
+        /// <summary>
         /// validator control.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,13 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Surname;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// Validator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator1;
         
         /// <summary>
         /// Nationality control.
@@ -85,6 +103,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Nationality;
         
         /// <summary>
+        /// Validator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator2;
+        
+        /// <summary>
         /// Birthdate control.
         /// </summary>
         /// <remarks>
@@ -94,13 +121,31 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox Birthdate;
         
         /// <summary>
-        /// PersonalID control.
+        /// Validator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PersonalID;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator3;
+        
+        /// <summary>
+        /// Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Email;
+        
+        /// <summary>
+        /// EmailRegExpValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailRegExpValidator;
         
         /// <summary>
         /// Add_button control.
@@ -139,6 +184,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox BookName;
         
         /// <summary>
+        /// Validator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator5;
+        
+        /// <summary>
         /// BookDescribtion control.
         /// </summary>
         /// <remarks>
@@ -148,6 +202,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.TextBox BookDescribtion;
         
         /// <summary>
+        /// Validator6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator6;
+        
+        /// <summary>
         /// BookReleaseDate control.
         /// </summary>
         /// <remarks>
@@ -155,6 +218,15 @@ namespace WebApplication4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BookReleaseDate;
+        
+        /// <summary>
+        /// Validator7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator7;
         
         /// <summary>
         /// AuthorNamesDropdown control.
