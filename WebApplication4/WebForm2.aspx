@@ -20,14 +20,14 @@
    
 </head>
 <body>
-   <asp:ScriptManager id="ScriptManager" runat="server">
-   </asp:ScriptManager>
+  
 
     <form id="Author_list" runat="server">
             <%--  <asp:Button ID="btnconfirm" runat="server" Font-Bold="True" ForeColor="Red" Style="z-index: 101;
 left: 272px; position: absolute; top: 208px" Text="Confrimation MsgBox"
 OnClientClick =" return confirm_meth()" Width="160px" />--%>
-        <asp:T
+        <asp:ScriptManager id="ScriptManager" runat="server">
+   </asp:ScriptManager>
 
         <asp:DropDownList ID="DropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList_SelectedIndexChanged">
             <asp:ListItem Text="choose a language" />
@@ -39,7 +39,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         <p>
         <asp:TextBox ID="Name"  meta:resourcekey="Name" runat="server"></asp:TextBox>
         
-    <ajaxToolkit:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Name" Format="dd/MM/yyyy" />
+    
             
          
        
@@ -70,10 +70,12 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </p>
        
          <p>
-            <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server"></asp:TextBox>
+            <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server" aut></asp:TextBox>
              <asp:RequiredFieldValidator ID="Validator3" ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
         </asp:RequiredFieldValidator>
+
+             <ajaxToolkit:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="dd/MM/yyyy" />
         </p>
 
         <p>
