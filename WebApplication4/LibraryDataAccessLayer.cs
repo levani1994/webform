@@ -17,6 +17,7 @@ namespace WebApplication4
             List<Authors> listAuthors = new List<Authors>();
             Connection connection = new Connection();
             connection.Create_Connection();
+      
             SqlCommand cmd = new SqlCommand("getAuthors", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -110,7 +111,7 @@ namespace WebApplication4
         }
 
         //update author in database
-        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, bool allowAuthor, string email)
+        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email)
         {
             Connection connection = new Connection();
             connection.Create_Connection();
@@ -121,7 +122,7 @@ namespace WebApplication4
             cmdUpdate.Parameters.AddWithValue("@AuthorNationality", nationality);
             cmdUpdate.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(birthdate));
             cmdUpdate.Parameters.AddWithValue("@ID", id);
-            cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
+           // cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
             cmdUpdate.Parameters.AddWithValue("@Email", email);
             cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
             cmdUpdate.ExecuteNonQuery();

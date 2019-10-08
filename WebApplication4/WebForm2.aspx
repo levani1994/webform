@@ -68,16 +68,19 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
         </asp:RequiredFieldValidator>
         </p>
-       
+        
          <p>
-            <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server" aut></asp:TextBox>
+            <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate"  runat="server" AutoComplete="off"></asp:TextBox>
              <asp:RequiredFieldValidator ID="Validator3" ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
         </asp:RequiredFieldValidator>
+            
 
-             <ajaxToolkit:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="dd/MM/yyyy" />
-        </p>
-
+                <ajaxToolkit:CalendarExtender  ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="dd/MM/yyyy" />
+           
+            
+        </p> 
+      
         <p>
             <asp:TextBox ID="Email" meta:resourcekey="Email"  runat="server"></asp:TextBox>
 
@@ -101,27 +104,29 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 meta:resourceKey="Add_button" />
         
         </p>
-    
-       
        
 
             <asp:GridView OnRowDataBound="AuthorGrid_RowDataBound" ID="Author_GridView" runat="server" AutoGenerateColumns="False"   DataKeyNames="ID"
                 DataSourceID="DataFromLibrary" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="900px" BorderStyle="None" 
                 BorderWidth="1px" CellPadding="3"  AllowPaging="True"  >
-                <Columns>
-                    
+                <Columns>               
                     <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="true" />
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                     <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                    <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor" />
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
-                    
-                   
+<%--                    <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor"  />--%>
+                    <asp:TemplateField HeaderText="AllowAuthor" SortExpression="AllowAuthor" >
+                        <ItemTemplate>
+                            <asp:CheckBox  ID="CheckBox3" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox3_CheckedChanged" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 </Columns>
+
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -137,7 +142,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             <asp:ObjectDataSource ID="DataFromLibrary" runat="server" 
                 SelectMethod="GetAuthors"
                 DeleteMethod="DeleteAuthor"
-          
+               UpdateMethod="UpdateAuthor"
                 TypeName="WebApplication4.LibraryDataAccessLayer"  >
                  
                 <DeleteParameters>
@@ -203,7 +208,8 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
          <asp:gridview runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
              <Columns>
-                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                
+                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" /><asp:BoundField />
                  <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
                  <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
                  <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
