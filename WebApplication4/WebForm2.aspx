@@ -6,26 +6,33 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title></title> 
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
 <script type="text/Javascript">
     function ConfirmOnDelete(item) {
         if (confirm("are you sure to delete: " + item + "?") == true)
             return true;
         else
             return false;
-        }  
+    }
+
+    $(document).ready(function () {
+        $("#Author_GridView_CheckBox1_0").click(function () {
+            alert("frfrf");
+        })
+    }
+        )
+    
 </script>
-    <script src="Scripts/jquery-3.4.1.min.js"></script>
-    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+   
    
 </head>
 <body>
   
 
     <form id="Author_list" runat="server">
-            <%--  <asp:Button ID="btnconfirm" runat="server" Font-Bold="True" ForeColor="Red" Style="z-index: 101;
-left: 272px; position: absolute; top: 208px" Text="Confrimation MsgBox"
-OnClientClick =" return confirm_meth()" Width="160px" />--%>
+          
         <asp:ScriptManager id="ScriptManager" runat="server">
    </asp:ScriptManager>
 
@@ -76,7 +83,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         </asp:RequiredFieldValidator>
             
 
-                <ajaxToolkit:CalendarExtender  ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="dd/MM/yyyy" />
+                <ajaxToolkit:CalendarExtender  ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="MM/dd/yyyy" />
            
             
         </p> 
@@ -110,21 +117,35 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
                 DataSourceID="DataFromLibrary" BackColor="White" BorderColor="#CCCCCC"  Height="100px" Width="900px" BorderStyle="None" 
                 BorderWidth="1px" CellPadding="3"  AllowPaging="True"  >
                 <Columns>               
-                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="true" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="true"  />
+                    <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" CausesValidation="true" Text='<%# Bind("Name") %>'></asp:TextBox>
+                          
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                          
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                     <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
-                    <asp:BoundField DataField="Birthdate" HeaderText="Birthdate" SortExpression="Birthdate" />
+                    <asp:BoundField DataField="Birthdate" HeaderText="Birthdate (MM/dd/yyyy)" SortExpression="Birthdate" />
                     <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
 
-<%--                    <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor"  />--%>
-                    <asp:TemplateField HeaderText="AllowAuthor" SortExpression="AllowAuthor" >
+           <%--     <asp:BoundField DataField="AllowAuthor" HeaderText="AllowAuthor" SortExpression="AllowAuthor"  />--%>
+                    <asp:TemplateField  HeaderText="AllowAuthor"  >
                         <ItemTemplate>
-                            <asp:CheckBox  ID="CheckBox3" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox3_CheckedChanged" />
+                            <asp:CheckBox  
+                                ID="myCheckBox"
+                                runat="server"
+                                AutoPostBack="true"
+                                Checked='<%# Convert.ToBoolean(Eval("AllowAuthor")) %>'
+                                OnCheckedChanged="CheckBox1_CheckedChanged" />
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                    <asp:CommandField  ShowEditButton="True"  ShowDeleteButton="True"/>
                 </Columns>
 
                 <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -142,7 +163,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
             <asp:ObjectDataSource ID="DataFromLibrary" runat="server" 
                 SelectMethod="GetAuthors"
                 DeleteMethod="DeleteAuthor"
-               UpdateMethod="UpdateAuthor"
+                UpdateMethod="UpdateAuthor"
                 TypeName="WebApplication4.LibraryDataAccessLayer"  >
                  
                 <DeleteParameters>
@@ -208,8 +229,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
 
          <asp:gridview runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
              <Columns>
-                
-                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" /><asp:BoundField />
+                 <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                  <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
                  <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
                  <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
@@ -230,7 +250,7 @@ OnClientClick =" return confirm_meth()" Width="160px" />--%>
         
      <asp:ObjectDataSource ID="DataFromBooks" runat="server"
      SelectMethod="GetBooks" 
-     TypeName="WebApplication4.LibraryDataAccessLayer">
+     TypeName="WebApplication4.LibraryDataAccessLayer" >
      </asp:ObjectDataSource>
 
 

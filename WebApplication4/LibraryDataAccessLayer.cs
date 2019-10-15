@@ -9,13 +9,13 @@ using System.Web;
 using System.Web.UI.WebControls;
 
 namespace WebApplication4
-{    public class LibraryDataAccessLayer : Connection
+{    public class LibraryDataAccessLayer : BasePage
     {
         //get authors from database
         public static List<Authors> GetAuthors()
         {     
             List<Authors> listAuthors = new List<Authors>();
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
       
             SqlCommand cmd = new SqlCommand("getAuthors", conn);
@@ -40,7 +40,7 @@ namespace WebApplication4
         public static List<Books> GetBooks()
         {
             List<Books> listBooks = new List<Books>();
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("GetBooks", conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -64,7 +64,7 @@ namespace WebApplication4
         public static List<Authors> GetAuthorNames()
         {
             List<Authors> listAuthors = new List<Authors>();
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("GetAuthorNames", conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -82,7 +82,7 @@ namespace WebApplication4
         public static List<Genres> GetGenres()
         {
             List<Genres> listGenres = new List<Genres>();
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("GetGenres", conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -100,7 +100,7 @@ namespace WebApplication4
         //delete author from database
         public static void DeleteAuthor(int id)
         {
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmdDelete = new SqlCommand("DeleteAuthor", conn);
             cmdDelete.CommandType = CommandType.StoredProcedure;
@@ -113,7 +113,7 @@ namespace WebApplication4
         //update author in database
         public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email)
         {
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmdUpdate = new SqlCommand("UpdateAuthors", conn);
             cmdUpdate.CommandType = CommandType.StoredProcedure;
@@ -132,3 +132,4 @@ namespace WebApplication4
     }
 }
 
+    

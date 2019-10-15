@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication4
 {
-    public partial class WebForm2 : Connection
+    public partial class WebForm2 : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,11 +46,11 @@ namespace WebApplication4
         //insert authors in database
         protected void AddAuthor(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertAuthors", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            if (Name.Text == String.Empty || Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
+            if (string.IsNullOrWhiteSpace(Name.Text)|| Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
             {
                 Response.Redirect("WebForm2");
             }
@@ -74,7 +74,7 @@ namespace WebApplication4
         //insert books in database
         public void AddBook(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
+            BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertBook", conn);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -97,6 +97,7 @@ namespace WebApplication4
         }
 
 
+       
         //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -116,8 +117,16 @@ namespace WebApplication4
             }
         }
 
-        protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
+
+
+            CheckBox myCheckBox = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)myCheckBox.NamingContainer;
+            string cid = row.Cells[1].Text;
+            bool status = myCheckBox.Checked;
+
 
         }
     }

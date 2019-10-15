@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebApplication4
 {
-    public  class Connection : System.Web.UI.Page
+    public  class BasePage : System.Web.UI.Page
     {
 
         //datanase connection function
