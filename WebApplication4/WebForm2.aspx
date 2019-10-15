@@ -122,7 +122,7 @@
                 <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                 <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                 <asp:BoundField DataField="Birthdate" HeaderText="Birthdate (MM/dd/yyyy)" SortExpression="Birthdate" />
-                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                <asp:BoundField ValidateRequestMode="Enabled"  DataField="Email" HeaderText="Email" SortExpression="Email" />
                 <asp:CheckBoxField DataField="AllowAuthor" />
                 <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
             </Columns>
