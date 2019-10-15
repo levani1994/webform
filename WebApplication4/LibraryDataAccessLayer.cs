@@ -111,7 +111,7 @@ namespace WebApplication4
         }
 
         //update author in database
-        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email)
+        public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email, bool allowAuthor)
         {
             BasePage connection = new BasePage();
             connection.Create_Connection();
@@ -122,11 +122,13 @@ namespace WebApplication4
             cmdUpdate.Parameters.AddWithValue("@AuthorNationality", nationality);
             cmdUpdate.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(birthdate));
             cmdUpdate.Parameters.AddWithValue("@ID", id);
-           // cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
+            cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
             cmdUpdate.Parameters.AddWithValue("@Email", email);
             cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
             cmdUpdate.ExecuteNonQuery();
             conn.Close();
+           
+
         }
      
     }

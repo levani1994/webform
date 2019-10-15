@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -115,19 +116,6 @@ namespace WebApplication4
                     }
                 }
             }
-        }
-
-
-        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-            CheckBox myCheckBox = (CheckBox)sender;
-            GridViewRow row = (GridViewRow)myCheckBox.NamingContainer;
-            string cid = row.Cells[1].Text;
-            bool status = myCheckBox.Checked;
-
-
         }
     }
 }
