@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
+
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.UI.WebControls;
+
+
+using System.Text.RegularExpressions;
+
+
+
 
 namespace WebApplication4
 {    public class LibraryDataAccessLayer : BasePage
@@ -110,6 +112,24 @@ namespace WebApplication4
             conn.Close();
         }
 
+        public static bool IsValidInput(string name, string surname, string nationality, string birthdate, string email)
+
+        {
+            bool EmailVal = true;
+            EmailVal= Regex.IsMatch(email, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(nationality) || string.IsNullOrWhiteSpace(birthdate) || EmailVal==false)
+            {
+
+                return false;
+            }
+            else
+            {
+                return true;
+
+            }
+
+        }
+
         //update author in database
         public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email, bool allowAuthor)
         {
@@ -117,20 +137,30 @@ namespace WebApplication4
             connection.Create_Connection();
             SqlCommand cmdUpdate = new SqlCommand("UpdateAuthors", conn);
             cmdUpdate.CommandType = CommandType.StoredProcedure;
-            cmdUpdate.Parameters.AddWithValue("@AuthorName", name);
-            cmdUpdate.Parameters.AddWithValue("@AuthorLastname", surname);
-            cmdUpdate.Parameters.AddWithValue("@AuthorNationality", nationality);
-            cmdUpdate.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(birthdate));
-            cmdUpdate.Parameters.AddWithValue("@ID", id);
-            cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
-            cmdUpdate.Parameters.AddWithValue("@Email", email);
-            cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
-            cmdUpdate.ExecuteNonQuery();
-            conn.Close();
+
+            if (IsValidInput(name, surname, nationality, birthdate, email))
+            {
+                cmdUpdate.Parameters.AddWithValue("@AuthorName", name);
+                cmdUpdate.Parameters.AddWithValue("@AuthorLastname", surname);
+                cmdUpdate.Parameters.AddWithValue("@AuthorNationality", nationality);
+                cmdUpdate.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(birthdate));
+                cmdUpdate.Parameters.AddWithValue("@ID", id);
+                cmdUpdate.Parameters.AddWithValue("@AllowAuthor", allowAuthor);
+                cmdUpdate.Parameters.AddWithValue("@Email", email);
+                cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
+                cmdUpdate.ExecuteNonQuery();
+               
+            }
+          
+           
+              conn.Close(); 
+            
            
 
         }
-     
+
+       
+      
     }
 }
 

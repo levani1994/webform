@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
+
 using System.Threading;
 using System.Web;
-using System.Web.Services.Description;
-using System.Web.UI;
+
+
 using System.Web.UI.WebControls;
 
 
@@ -17,23 +17,23 @@ namespace WebApplication4
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-         lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
+            lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
         }
-        
+
         //language coockies
         protected override void InitializeCulture()
         {
             HttpCookie cookie = Request.Cookies["language"];
             if (cookie != null)
             {
-               Culture = cookie.Value.ToString();
-               UICulture = cookie.Value.ToString();
-               Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
-               Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
-               base.InitializeCulture();
+                Culture = cookie.Value.ToString();
+                UICulture = cookie.Value.ToString();
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cookie.Value.ToString());
+                base.InitializeCulture();
             }
         }
-           //language change
+        //language change
         protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             HttpCookie cookie = new HttpCookie("language");
@@ -51,24 +51,25 @@ namespace WebApplication4
             connection.Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertAuthors", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            if (string.IsNullOrWhiteSpace(Name.Text)|| Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
+            if (string.IsNullOrWhiteSpace(Name.Text) || Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
             {
                 Response.Redirect("WebForm2");
             }
-            else { 
-            cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
-            cmd.Parameters.AddWithValue("@AuthorLastname", Surname.Text);
-            cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
-            cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
-            cmd.Parameters.AddWithValue("@Email", Email.Text);
-            cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
-            cmd.Parameters.AddWithValue("@AllowAuthor", true);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            Author_GridView.DataBind();
-            Response.Redirect("WebForm2");
+            else
+            {
+                cmd.Parameters.AddWithValue("@AuthorName", Name.Text);
+                cmd.Parameters.AddWithValue("@AuthorLastname", Surname.Text);
+                cmd.Parameters.AddWithValue("@AuthorNationality", Nationality.Text);
+                cmd.Parameters.AddWithValue("@Birthdate", Convert.ToDateTime(Birthdate.Text));
+                cmd.Parameters.AddWithValue("@Email", Email.Text);
+                cmd.Parameters.AddWithValue("@DateInserted", DateTime.Now);
+                cmd.Parameters.AddWithValue("@AllowAuthor", true);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                Author_GridView.DataBind();
+                Response.Redirect("WebForm2");
             }
-           
+
         }
 
 
@@ -98,7 +99,7 @@ namespace WebApplication4
         }
 
 
-       
+
         //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {

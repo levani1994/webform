@@ -50,7 +50,7 @@
 
 
 
-            <asp:RequiredFieldValidator ID="validator" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+            <asp:RequiredFieldValidator  ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
             </asp:RequiredFieldValidator>
 
@@ -61,7 +61,7 @@
         <p>
             <asp:TextBox ID="Surname" meta:resourcekey="Surname" runat="server"></asp:TextBox>
 
-            <asp:RequiredFieldValidator ID="Validator1" ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+            <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
             </asp:RequiredFieldValidator>
 
@@ -71,25 +71,25 @@
 
         <p>
             <asp:TextBox ID="Nationality" meta:resourcekey="Nationality" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="Validator2" ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+            <asp:RequiredFieldValidator ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
             </asp:RequiredFieldValidator>
         </p>
 
         <p>
             <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate" runat="server" AutoComplete="off"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="Validator3" ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+            <asp:RequiredFieldValidator  ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
             </asp:RequiredFieldValidator>
 
 
-            <ajaxToolkit:CalendarExtender ID="Calendar1" PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="MM/dd/yyyy" />
+            <ajaxToolkit:CalendarExtender  PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="MM/dd/yyyy" />
 
 
         </p>
 
         <p>
-            <asp:TextBox ID="Email" meta:resourcekey="Email" runat="server"></asp:TextBox>
+            <asp:TextBox  meta:resourcekey="Email" runat="server"></asp:TextBox>
 
             <asp:RegularExpressionValidator
                 runat="server"
@@ -122,8 +122,8 @@
                 <asp:BoundField DataField="Surname" HeaderText="Surname" SortExpression="Surname" />
                 <asp:BoundField DataField="Nationality" HeaderText="Nationality" SortExpression="Nationality" />
                 <asp:BoundField DataField="Birthdate" HeaderText="Birthdate (MM/dd/yyyy)" SortExpression="Birthdate" />
-                <asp:BoundField ValidateRequestMode="Enabled"  DataField="Email" HeaderText="Email" SortExpression="Email" />
-                <asp:CheckBoxField DataField="AllowAuthor" />
+                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                <asp:CheckBoxField HeaderText="Allow" DataField="AllowAuthor" />
                 <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
             </Columns>
 
@@ -136,7 +136,17 @@
             <SortedAscendingHeaderStyle BackColor="#007DBB" />
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#00547E" />
+            
         </asp:GridView>
+         <asp:RegularExpressionValidator
+                runat="server"
+                ID="RegularExpressionValidator1"
+                ErrorMessage="Please enter valid email"
+                ForeColor="Red"
+                ControlToValidate="Email"
+                ValidationGroup="val1"
+                ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" >
+            </asp:RegularExpressionValidator>
 
 
         <asp:ObjectDataSource ID="DataFromLibrary" runat="server"
@@ -154,15 +164,6 @@
 
 
         </asp:ObjectDataSource>
-
-
-
-
-
-
-
-
-
 
 
 
