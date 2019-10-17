@@ -32,6 +32,7 @@
 
 
     <form id="Author_list" runat="server">
+    
 
         <asp:ScriptManager ID="ScriptManager" runat="server">
         </asp:ScriptManager>
@@ -89,7 +90,7 @@
         </p>
 
         <p>
-            <asp:TextBox  meta:resourcekey="Email" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Email" meta:resourcekey="Email" runat="server"></asp:TextBox>
 
             <asp:RegularExpressionValidator
                 runat="server"

@@ -17,7 +17,7 @@ namespace WebApplication4
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbltime.Text = String.Format("Page posted at: {0}", DateTime.Now.ToLongTimeString());
+
         }
 
         //language coockies

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace WebApplication4
 {
@@ -14,10 +10,19 @@ namespace WebApplication4
         public static SqlConnection conn = null;
         public void Create_Connection()
         {
-            string conStr = ConfigurationManager.ConnectionStrings["levaniDBConnectionString"].ConnectionString;
+            try
+            {
+                string conStr = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
 
-            conn = new SqlConnection(conStr);
-            conn.Open();
+                conn = new SqlConnection(conStr);
+                conn.Open();
+            }
+            catch (System.Exception ex)
+            {
+
+                ex.Message.ToString();
+            }
+            
         }
 
     }

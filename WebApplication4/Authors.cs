@@ -5,6 +5,10 @@ using System.Web;
 
 namespace WebApplication4
 {
+}
+
+namespace WebApplication4
+{
     public class Authors
     {
         public int ID { get; set; }
