@@ -21,9 +21,32 @@ namespace WebApplication4
             {
                 Response.Redirect("Registration");
             }
+            else
+            {
 
-            
 
+                string role = string.Empty;
+                role = Convert.ToString(Session["user"]);
+                if (role == null)
+                {
+                    Response.Redirect("Registration");
+                }
+                else if (role == "user")
+                {
+                    Authors_div.Visible = false;
+                    Author_GridView.Columns[0].Visible = false;
+                    Author_GridView.Columns[6].Visible = false;
+                    Author_GridView.Columns[7].Visible = false;
+                    Book_gridview.Columns[0].Visible = false;
+                    Books_div.Visible = false;
+                }
+
+                else if (role == "admin")
+                {
+                    Authors_div.Visible = true;
+                }
+
+            }
         }
 
         //language coockies
@@ -74,8 +97,8 @@ namespace WebApplication4
                 Author_GridView.DataBind();
                 Response.Redirect("WebForm2");
 
-            
-            
+
+
             }
 
         }
@@ -127,7 +150,7 @@ namespace WebApplication4
             }
         }
 
-       
+
         protected void Loguot(object sender, EventArgs e)
         {
             Session["User"] = null;

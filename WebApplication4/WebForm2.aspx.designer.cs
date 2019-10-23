@@ -40,13 +40,13 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList;
         
         /// <summary>
-        /// lbltime control.
+        /// Authors_div control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltime;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Authors_div;
         
         /// <summary>
         /// Name control.
@@ -139,6 +139,15 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.ObjectDataSource DataFromLibrary;
         
         /// <summary>
+        /// Books_div control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Books_div;
+        
+        /// <summary>
         /// BookName control.
         /// </summary>
         /// <remarks>
@@ -218,6 +227,15 @@ namespace WebApplication4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Book_Add;
+        
+        /// <summary>
+        /// Book_gridview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Book_gridview;
         
         /// <summary>
         /// DataFromBooks control.

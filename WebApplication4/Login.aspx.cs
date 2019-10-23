@@ -17,28 +17,30 @@ namespace WebApplication4
 
             if (usr.UserEmail == "True")
             {
-                
-                if (usr.UserRole=="user")
-                {
-                    Session["user"] = Email.Value;
 
-                    Response.Redirect("Error.html");
-                }
-                else if (usr.UserRole=="admin")
-                    
+                if (usr.UserRole == "user")
                 {
-                    Session["user"] = Email.Value;
+                    Session["user"] = usr.UserRole;
+
+                    Response.Redirect("WebForm2");
+                   
+                }
+                else if (usr.UserRole == "admin")
+
+                {
+                    Session["user"] = usr.UserRole;
                     Response.Redirect("Webform2");
                 }
-                
+
+
             }
             else
             {
-                Response.Redirect("Login");
+                ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('არასწორი მეილი ან პაროლი')</script>");
             }
+        }
 
         }
 
      
     }
-}
