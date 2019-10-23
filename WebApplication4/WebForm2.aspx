@@ -25,13 +25,21 @@
             $("#AddUserToggle").click(function () {
                 $("#Authors_div").slideToggle("slow");
             });
+
+            $("#AddBookToggle").click(function () {
+                $("#Books_div").slideToggle("slow");
+            });
         });
 
 
     </script>
+
     <style>
         #Authors_div {
-           
+            display: none;
+        }
+
+        #Books_div {
             display: none;
         }
     </style>
@@ -42,99 +50,99 @@
 
 
     <form id="Author_list" runat="server">
-        
-        
+
+
         <asp:ScriptManager ID="ScriptManager" runat="server">
         </asp:ScriptManager>
-        
+
         <asp:DropDownList ID="DropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList_SelectedIndexChanged">
             <asp:ListItem Text="choose a language" />
             <asp:ListItem Text="English" Value="en-us" />
             <asp:ListItem Text="ქართული" Value="ka-ge" />
         </asp:DropDownList>
 
-       
+
         <asp:Button class="btn btn-info btn-block" runat="server" type="submit" OnClick="Loguot" Text="Log out" />
         <br />
-         <br />
-       
-        <label id="AddUserToggle">Add Author ▼</label>
         <br />
-         <br />
+
+        <label runat="server" id="AddUserToggle">Add Author ▼</label>
+        <br />
+        <br />
         <div runat="server" id="Authors_div">
 
-        
-
-
-                <p>
-                    <asp:TextBox ID="Name" meta:resourcekey="Name" runat="server"></asp:TextBox>
 
 
 
-
-
-                    <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
-
-                    </asp:RequiredFieldValidator>
-
-
-                </p>
-
-
-                <p>
-                    <asp:TextBox ID="Surname" meta:resourcekey="Surname" runat="server"></asp:TextBox>
-
-                    <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
-
-                    </asp:RequiredFieldValidator>
-
-                </p>
+            <p>
+                <asp:TextBox ID="Name" meta:resourcekey="Name" runat="server"></asp:TextBox>
 
 
 
-                <p>
-                    <asp:TextBox ID="Nationality" meta:resourcekey="Nationality" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
-
-                    </asp:RequiredFieldValidator>
-                </p>
-
-                <p>
-                    <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate" runat="server" AutoComplete="off"></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
-
-                    </asp:RequiredFieldValidator>
 
 
-                    <ajaxToolkit:CalendarExtender PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="MM/dd/yyyy" />
+                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+
+                </asp:RequiredFieldValidator>
 
 
-                </p>
+            </p>
 
-                <p>
-                    <asp:TextBox ID="Email" meta:resourcekey="Email" runat="server"></asp:TextBox>
 
-                    <asp:RegularExpressionValidator
-                        runat="server"
-                        ID="EmailRegExpValidator"
-                        ErrorMessage="Please enter valid email"
-                        ForeColor="Red"
-                        ControlToValidate="Email"
-                        ValidationGroup="val1"
-                        ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                    </asp:RegularExpressionValidator>
-                </p>
+            <p>
+                <asp:TextBox ID="Surname" meta:resourcekey="Surname" runat="server"></asp:TextBox>
 
-                <p>
+                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
-                    <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor"
-                        ValidationGroup="val1"
-                        Text="validate"
-                        CausesValidation="true"
-                        meta:resourceKey="Add_button" />
+                </asp:RequiredFieldValidator>
 
-                </p>
-         
+            </p>
+
+
+
+            <p>
+                <asp:TextBox ID="Nationality" meta:resourcekey="Nationality" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+
+                </asp:RequiredFieldValidator>
+            </p>
+
+            <p>
+                <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate" runat="server" AutoComplete="off"></asp:TextBox>
+                <asp:RequiredFieldValidator ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+
+                </asp:RequiredFieldValidator>
+
+
+                <ajaxToolkit:CalendarExtender PopupButtonID="imgPopup" runat="server" TargetControlID="Birthdate" Format="MM/dd/yyyy" />
+
+
+            </p>
+
+            <p>
+                <asp:TextBox ID="Email" meta:resourcekey="Email" runat="server"></asp:TextBox>
+
+                <asp:RegularExpressionValidator
+                    runat="server"
+                    ID="EmailRegExpValidator"
+                    ErrorMessage="Please enter valid email"
+                    ForeColor="Red"
+                    ControlToValidate="Email"
+                    ValidationGroup="val1"
+                    ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                </asp:RegularExpressionValidator>
+            </p>
+
+            <p>
+
+                <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor"
+                    ValidationGroup="val1"
+                    Text="validate"
+                    CausesValidation="true"
+                    meta:resourceKey="Add_button" />
+
+            </p>
+
         </div>
 
 
@@ -191,7 +199,11 @@
 
 
         </asp:ObjectDataSource>
+        <br />
 
+        <label runat="server" id="AddBookToggle">Add Book ▼</label>
+        <br />
+        <br />
 
         <div runat="server" id="Books_div">
             <p>
@@ -236,7 +248,7 @@
 
         <asp:GridView ID="Book_gridview" runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
             <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                <asp:BoundField DataField="Id"  HeaderText="Id" SortExpression="Id" />
                 <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
                 <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
                 <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />

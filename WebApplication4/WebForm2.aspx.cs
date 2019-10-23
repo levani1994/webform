@@ -39,6 +39,8 @@ namespace WebApplication4
                     Author_GridView.Columns[7].Visible = false;
                     Book_gridview.Columns[0].Visible = false;
                     Books_div.Visible = false;
+                    AddUserToggle.Visible = false;
+                    AddBookToggle.Visible = false;
                 }
 
                 else if (role == "admin")
