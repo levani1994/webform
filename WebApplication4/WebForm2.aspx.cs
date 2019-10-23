@@ -17,6 +17,12 @@ namespace WebApplication4
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("Registration");
+            }
+
+            
 
         }
 
@@ -47,8 +53,7 @@ namespace WebApplication4
         //insert authors in database
         protected void AddAuthor(object sender, EventArgs e)
         {
-            BasePage connection = new BasePage();
-            connection.Create_Connection();
+            Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertAuthors", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             if (string.IsNullOrWhiteSpace(Name.Text) || Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
@@ -68,6 +73,9 @@ namespace WebApplication4
                 conn.Close();
                 Author_GridView.DataBind();
                 Response.Redirect("WebForm2");
+
+            
+            
             }
 
         }
@@ -117,6 +125,13 @@ namespace WebApplication4
                     }
                 }
             }
+        }
+
+       
+        protected void Loguot(object sender, EventArgs e)
+        {
+            Session["User"] = null;
+            Response.Redirect("login.aspx");
         }
     }
 }

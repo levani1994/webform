@@ -154,7 +154,7 @@
             SelectMethod="GetAuthors"
             DeleteMethod="DeleteAuthor"
             UpdateMethod="UpdateAuthor"
-            TypeName="WebApplication4.LibraryDataAccessLayer">
+            TypeName="WebApplication4.DALlibrary">
 
             <DeleteParameters>
                 <asp:Parameter Name="ID" Type="Int32" />
@@ -231,19 +231,19 @@
 
         <asp:ObjectDataSource ID="DataFromBooks" runat="server"
             SelectMethod="GetBooks"
-            TypeName="WebApplication4.LibraryDataAccessLayer"></asp:ObjectDataSource>
+            TypeName="WebApplication4.DALlibrary"></asp:ObjectDataSource>
 
 
         <asp:ObjectDataSource ID="AuthorNames" runat="server"
             SelectMethod="GetAuthorNames"
-            TypeName="WebApplication4.LibraryDataAccessLayer"></asp:ObjectDataSource>
+            TypeName="WebApplication4.DALlibrary"></asp:ObjectDataSource>
 
 
         <asp:ObjectDataSource ID="Genres" runat="server"
             SelectMethod="GetGenres"
-            TypeName="WebApplication4.LibraryDataAccessLayer"></asp:ObjectDataSource>
+            TypeName="WebApplication4.DALlibrary"></asp:ObjectDataSource>
 
-
+        <asp:button class="btn btn-info btn-block" runat="server" type="submit" OnClick="Loguot" Text="Log out" />
 
     </form>
 </body>

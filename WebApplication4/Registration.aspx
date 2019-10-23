@@ -20,7 +20,7 @@
             <div class="form-row mb-4">
                 <div class="col">
                     <!-- First name -->
-                    <input runat="server" type="text" id="FirstName" class="form-control" placeholder="First name" required="required">
+                    <input runat="server" type="text"  id="FirstName" class="form-control" placeholder="First name" required="required" >
                 </div>
                 <div class="col">
                     <!-- Last name -->
@@ -47,7 +47,7 @@
             <!-- Sign up button -->
             <asp:button class="btn btn-info btn-block" runat="server" type="submit" onclick="UserRegistration" Text="Sign up" />
             <p class="h6">or</p>
-           <a href="WebForm2.aspx" class="btn btn-info btn-block">Log in</a>
+           <a href="Login.aspx" class="btn btn-info btn-block">Log in</a>
 
 
         </form>

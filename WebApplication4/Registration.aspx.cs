@@ -14,26 +14,28 @@ namespace WebApplication4
         protected void UserRegistration(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(FirstName.Value) || string.IsNullOrWhiteSpace(LastName.Value) || string.IsNullOrWhiteSpace(Email.Value) || Password.Value == RepeatPassword.Value)
+            if (FirstName.Value == string.Empty ||   LastName.Value==string.Empty || Email.Value==string.Empty || Password.Value==string.Empty  || Password.Value != RepeatPassword.Value)
             {
-                BasePage connection = new BasePage();
-                connection.Create_Connection();
+                Response.Redirect("registration");
+
+            }
+            else
+            {
+              
+                //BasePage connection = new BasePage();
+                //connection.Create_Connection();
+                Create_Connection();
                 SqlCommand cmd = new SqlCommand("AddUser", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@FirstName", FirstName.Value);
                 cmd.Parameters.AddWithValue("@LastName", LastName.Value);
                 cmd.Parameters.AddWithValue("@Email", Email.Value);
-                cmd.Parameters.AddWithValue("@Password", Password.Value);
+                cmd.Parameters.AddWithValue("@Password", ComputeSha256Hash( Password.Value));
                 cmd.Parameters.AddWithValue("@RegistrationDate", DateTime.Now);
                 cmd.Parameters.AddWithValue("@Role", "user");
                 cmd.ExecuteNonQuery();
                 Response.Redirect("WebForm2");
-
-            }
-            else
-            {
-                Response.Redirect("registration");
-
+                conn.Close();
             }
 
 

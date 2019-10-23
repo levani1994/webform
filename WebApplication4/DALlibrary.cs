@@ -11,15 +11,16 @@ using System.Text.RegularExpressions;
 
 
 namespace WebApplication4
-{    public class LibraryDataAccessLayer : BasePage
+{
+    public class DALlibrary : BasePage
     {
         //get authors from database
         public static List<Authors> GetAuthors()
-        {     
+        {
             List<Authors> listAuthors = new List<Authors>();
             BasePage connection = new BasePage();
             connection.Create_Connection();
-      
+
             SqlCommand cmd = new SqlCommand("getAuthors", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -55,7 +56,7 @@ namespace WebApplication4
                 books.ReleaseDate = Convert.ToInt32(reader["ReleaseDate"]);
                 books.AuthorName = reader["AuthorName"].ToString();
                 books.Genre = reader["Genre"].ToString();
-               
+
                 listBooks.Add(books);
             }
             conn.Close();
@@ -72,10 +73,10 @@ namespace WebApplication4
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-              Authors authors = new Authors();
-              authors.ID = Convert.ToInt32(reader["ID"]);
-              authors.Name = reader["AuthorName"].ToString();
-              listAuthors.Add(authors);
+                Authors authors = new Authors();
+                authors.ID = Convert.ToInt32(reader["ID"]);
+                authors.Name = reader["AuthorName"].ToString();
+                listAuthors.Add(authors);
             }
             conn.Close();
             return listAuthors;
@@ -102,6 +103,8 @@ namespace WebApplication4
         //delete author from database
         public static void DeleteAuthor(int id)
         {
+
+
             BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmdDelete = new SqlCommand("DeleteAuthor", conn);
@@ -116,8 +119,8 @@ namespace WebApplication4
 
         {
             bool EmailVal = true;
-            EmailVal= Regex.IsMatch(email, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(nationality) || string.IsNullOrWhiteSpace(birthdate) || EmailVal==false)
+            EmailVal = Regex.IsMatch(email, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(nationality) || string.IsNullOrWhiteSpace(birthdate) || EmailVal == false)
             {
 
                 return false;
@@ -149,19 +152,59 @@ namespace WebApplication4
                 cmdUpdate.Parameters.AddWithValue("@Email", email);
                 cmdUpdate.Parameters.AddWithValue("@DateUpdated", DateTime.Now.ToString());
                 cmdUpdate.ExecuteNonQuery();
-               
+
             }
-          
-           
-              conn.Close(); 
-            
-           
+
+
+            conn.Close();
+
+
 
         }
 
-       
-      
+        public static UserLoginInfo CheckLogin(string Email, string Password)
+        {
+
+            BasePage connection = new BasePage();
+            connection.Create_Connection();
+            SqlCommand cmdLogin = new SqlCommand("Login", conn);
+            cmdLogin.CommandType = CommandType.StoredProcedure;
+            bool canlogin = false;
+            string result = null;
+            string role = null;
+            cmdLogin.Parameters.AddWithValue("@Email", Email);
+            cmdLogin.Parameters.AddWithValue("@Password", Password);
+            cmdLogin.ExecuteNonQuery();
+            SqlDataReader reader = cmdLogin.ExecuteReader();
+            UserLoginInfo userLogin = new UserLoginInfo();
+
+            while (reader.Read())
+            {
+                
+                result = reader["UserEmail"].ToString();
+                role = reader["UserRole"].ToString();
+
+            }
+            
+            conn.Close();
+            if (result == Email)
+            {
+                canlogin = true;
+            }
+            else
+            {
+                canlogin = false;
+            }
+            result = canlogin.ToString();
+
+            userLogin.UserEmail = result;
+            userLogin.UserRole = role;
+
+            return userLogin;
+        }
     }
+
+
 }
 
-    
+
