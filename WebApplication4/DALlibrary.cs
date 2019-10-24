@@ -6,10 +6,6 @@ using System.Data.SqlClient;
 
 
 using System.Text.RegularExpressions;
-
-
-
-
 namespace WebApplication4
 {
     public class DALlibrary : BasePage
@@ -115,6 +111,7 @@ namespace WebApplication4
             conn.Close();
         }
 
+        //check inputs and email with regex
         public static bool IsValidInput(string name, string surname, string nationality, string birthdate, string email)
 
         {
@@ -162,9 +159,9 @@ namespace WebApplication4
 
         }
 
+        //check user info in databse
         public static UserLoginInfo CheckLogin(string Email, string Password)
         {
-
             BasePage connection = new BasePage();
             connection.Create_Connection();
             SqlCommand cmdLogin = new SqlCommand("Login", conn);
@@ -177,15 +174,11 @@ namespace WebApplication4
             cmdLogin.ExecuteNonQuery();
             SqlDataReader reader = cmdLogin.ExecuteReader();
             UserLoginInfo userLogin = new UserLoginInfo();
-
             while (reader.Read())
             {
-                
                 result = reader["UserEmail"].ToString();
                 role = reader["UserRole"].ToString();
-
             }
-            
             conn.Close();
             if (result == Email)
             {
@@ -196,15 +189,11 @@ namespace WebApplication4
                 canlogin = false;
             }
             result = canlogin.ToString();
-
             userLogin.UserEmail = result;
             userLogin.UserRole = role;
-
             return userLogin;
         }
     }
-
-
 }
 
 

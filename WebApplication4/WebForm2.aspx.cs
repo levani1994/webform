@@ -23,8 +23,6 @@ namespace WebApplication4
             }
             else
             {
-
-
                 string role = string.Empty;
                 role = Convert.ToString(Session["user"]);
                 if (role == null)
@@ -47,7 +45,6 @@ namespace WebApplication4
                 {
                     
                 }
-
             }
         }
 
@@ -64,6 +61,7 @@ namespace WebApplication4
                 base.InitializeCulture();
             }
         }
+
         //language change
         protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,7 +71,6 @@ namespace WebApplication4
             Response.Cookies.Add(cookie);
             Response.Redirect("WebForm2.aspx");
         }
-
 
         //insert authors in database
         protected void AddAuthor(object sender, EventArgs e)
@@ -105,7 +102,6 @@ namespace WebApplication4
 
         }
 
-
         //insert books in database
         public void AddBook(object sender, EventArgs e)
         {
@@ -130,9 +126,7 @@ namespace WebApplication4
                 Response.Redirect("WebForm2");
             }
         }
-
-
-
+        
         //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -152,7 +146,7 @@ namespace WebApplication4
             }
         }
 
-
+        //loguot
         protected void Loguot(object sender, EventArgs e)
         {
             Session["User"] = null;
