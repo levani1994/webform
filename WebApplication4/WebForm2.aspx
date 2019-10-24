@@ -9,6 +9,7 @@
     <title></title>
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+
     <script type="text/Javascript">
         function ConfirmOnDelete(item) {
             if (confirm("are you sure to delete: " + item + "?") == true)

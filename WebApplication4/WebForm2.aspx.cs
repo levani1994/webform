@@ -19,7 +19,7 @@ namespace WebApplication4
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("Registration");
+                Response.Redirect("Login");
             }
             else
             {
@@ -45,7 +45,7 @@ namespace WebApplication4
 
                 else if (role == "admin")
                 {
-                    Authors_div.Visible = true;
+                    
                 }
 
             }
