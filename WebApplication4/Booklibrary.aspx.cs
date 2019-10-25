@@ -1,19 +1,15 @@
 ﻿using System;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-
 using System.Threading;
 using System.Web;
-
-
 using System.Web.UI.WebControls;
 
 
 namespace WebApplication4
 {
-    public partial class WebForm2 : BasePage
+    public partial class Booklibrary : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,7 +65,7 @@ namespace WebApplication4
             cookie.Value = DropDownList.SelectedValue;
             cookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(cookie);
-            Response.Redirect("WebForm2.aspx");
+            Response.Redirect("Booklibrary.aspx");
         }
 
         //insert authors in database
@@ -80,7 +76,7 @@ namespace WebApplication4
             cmd.CommandType = CommandType.StoredProcedure;
             if (string.IsNullOrWhiteSpace(Name.Text) || Surname.Text == String.Empty || Nationality.Text == String.Empty || Birthdate.Text == String.Empty)
             {
-                Response.Redirect("WebForm2");
+                Response.Redirect("Booklibrary");
             }
             else
             {
@@ -94,7 +90,7 @@ namespace WebApplication4
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 Author_GridView.DataBind();
-                Response.Redirect("WebForm2");
+                Response.Redirect("Booklibrary");
 
 
 
@@ -111,7 +107,7 @@ namespace WebApplication4
             cmd.CommandType = CommandType.StoredProcedure;
             if (BookName.Text == String.Empty || BookDescribtion.Text == string.Empty || AuthorNamesDropdown.SelectedValue == null || GenresDropdown.SelectedValue == null)
             {
-                Response.Redirect("WebForm2");
+                Response.Redirect("Booklibrary");
             }
             else
             {
@@ -123,7 +119,7 @@ namespace WebApplication4
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 Author_GridView.DataBind();
-                Response.Redirect("WebForm2");
+                Response.Redirect("Booklibrary");
             }
         }
         

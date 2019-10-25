@@ -16,12 +16,12 @@ namespace WebApplication4
                 if (usr.UserRole == "user")
                 {
                     Session["user"] = usr.UserRole;
-                    Response.Redirect("WebForm2");
+                    Response.Redirect("Booklibrary");
                 }
                 else if (usr.UserRole == "admin")
                 {
                     Session["user"] = usr.UserRole;
-                    Response.Redirect("Webform2");
+                    Response.Redirect("Booklibrary");
                 }
              }
             else

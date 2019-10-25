@@ -10,7 +10,7 @@
 namespace WebApplication4 {
     
     
-    public partial class WebForm2 {
+    public partial class Booklibrary {
         
         /// <summary>
         /// Author_list control.

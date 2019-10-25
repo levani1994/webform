@@ -17,22 +17,12 @@
 
             <p class="h4 mb-4">Sign in</p>
 
-           
-
             <!-- E-mail -->
             <input runat="server" type="email" id="Email" class="form-control mb-4" placeholder="E-mail" required="required">
 
             <!-- Password -->
             <input runat="server" type="password" id="Password" class="form-control mb-4" placeholder="Password" required="required">
         
-
-
-          
-
-
-            
-
-              
 
             <!-- Sign up button -->
           
