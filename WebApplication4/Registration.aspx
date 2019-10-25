@@ -28,7 +28,7 @@
 
             <!-- Password -->
             <input runat="server" type="password" id="Password" class="form-control" placeholder="Password" required="required" aria-describedby="passwordHelperBlock">
-            <small id="passwordHelperBlock" class="form-text text-muted mb-4">At least 8 characters and 1 digit
+            <small id="passwordHelperBlock" class="form-text text-muted mb-4">al least 8 symbols
             </small>
             <input runat="server" type="password" id="RepeatPassword" class="form-control mb-4" placeholder="Repeat Password" required="required">
             <!-- Sign up button -->

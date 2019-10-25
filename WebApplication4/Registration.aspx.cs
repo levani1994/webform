@@ -18,7 +18,11 @@ namespace WebApplication4
             }
             else if (Password.Value != RepeatPassword.Value)
             {
-                ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('პაროლები არ ემთხვევა')</script>");
+                ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('passwords don't match')</script>");
+            }
+            else if (Password.Value.Length<8 || Password.Value.Length>16)
+            {
+                ClientScript.RegisterStartupScript(Page.GetType(), "validation", "<script language='javascript'>alert('password must be 8-16 characters')</script>");
             }
             else
             {
@@ -33,8 +37,9 @@ namespace WebApplication4
                 cmd.Parameters.AddWithValue("@Role", "user");
                 cmd.ExecuteNonQuery();
                 Response.Redirect("Success.html");
+                conn.Close();
             }
-            conn.Close();
+           
         }
     }
 }

@@ -25,10 +25,10 @@ namespace WebApplication4
                 {
                     Response.Redirect("Registration");
                 }
-                else if (role == "user")
+                else if (role == "member")
                 {
                     Authors_div.Visible = false;
-                    Author_GridView.Columns[0].Visible = false;
+                    Author_GridView.Columns[].Visible = false;
                     Author_GridView.Columns[6].Visible = false;
                     Author_GridView.Columns[7].Visible = false;
                     Book_gridview.Columns[0].Visible = false;
