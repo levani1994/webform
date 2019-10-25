@@ -82,7 +82,7 @@
 
 
 
-                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="authorval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
 
@@ -93,7 +93,7 @@
             <p>
                 <asp:TextBox ID="Surname" meta:resourcekey="Surname" runat="server"></asp:TextBox>
 
-                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ControlToValidate="Name" ValidationGroup="authorval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
 
@@ -103,14 +103,14 @@
 
             <p>
                 <asp:TextBox ID="Nationality" meta:resourcekey="Nationality" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ControlToValidate="Nationality" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ControlToValidate="Nationality" ValidationGroup="authorval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
             </p>
 
             <p>
                 <asp:TextBox ID="Birthdate" meta:resourcekey="Birthdate" runat="server" AutoComplete="off"></asp:TextBox>
-                <asp:RequiredFieldValidator ControlToValidate="Birthdate" ValidationGroup="val1" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ControlToValidate="Birthdate" ValidationGroup="authorval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
 
@@ -129,7 +129,7 @@
                     ErrorMessage="Please enter valid email"
                     ForeColor="Red"
                     ControlToValidate="Email"
-                    ValidationGroup="val1"
+                    ValidationGroup="authorval"
                     ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
                 </asp:RegularExpressionValidator>
             </p>
@@ -137,7 +137,7 @@
             <p>
 
                 <asp:Button ID="Add_button" runat="server" OnClick="AddAuthor"
-                    ValidationGroup="val1"
+                    ValidationGroup="authorval"
                     Text="validate"
                     CausesValidation="true"
                     meta:resourceKey="Add_button" />
@@ -180,7 +180,7 @@
             ErrorMessage="Please enter valid email"
             ForeColor="Red"
             ControlToValidate="Email"
-            ValidationGroup="val1"
+            ValidationGroup="authorval"
             ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
         </asp:RegularExpressionValidator>
 
@@ -209,20 +209,20 @@
         <div runat="server" id="Books_div">
             <p>
                 <asp:TextBox ID="BookName" meta:resourcekey="bookName" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="Validator5" ControlToValidate="BookName" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ID="Validator5" ControlToValidate="BookName" ValidationGroup="bookval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
             </p>
 
             <p>
                 <asp:TextBox ID="BookDescribtion" meta:resourcekey="bookDescribtion" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="Validator6" ControlToValidate="BookDescribtion" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ID="Validator6" ControlToValidate="BookDescribtion" ValidationGroup="bookval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
             </p>
             <p>
                 <asp:TextBox ID="BookReleaseDate" meta:resourcekey="BookReleaseDate" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="Validator7" ControlToValidate="BookReleaseDate" ValidationGroup="val2" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
+                <asp:RequiredFieldValidator ID="Validator7" ControlToValidate="BookReleaseDate" ValidationGroup="bookval" ErrorMessage="შეავსეთ გამოტოვებული ველი" runat="server">
 
                 </asp:RequiredFieldValidator>
             </p>
@@ -240,7 +240,7 @@
             </p>
 
             <p>
-                <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook" ValidationGroup="val2"
+                <asp:Button ID="Book_Add" runat="server" meta:resourceKey="Book_Add" OnClick="AddBook" ValidationGroup="bookval"
                     Text="validate"
                     CausesValidation="true" />
             </p>

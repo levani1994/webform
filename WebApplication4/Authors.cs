@@ -26,3 +26,11 @@ namespace WebApplication4
     }
 }
 
+namespace WebApplication4
+{
+
+
+    public partial class authors
+    {
+    }
+}

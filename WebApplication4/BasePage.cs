@@ -7,7 +7,6 @@ namespace WebApplication4
 {
     public  class BasePage : System.Web.UI.Page
     {
-
         //datanase connection function
         public static SqlConnection conn = null;
         public void Create_Connection()
@@ -15,18 +14,14 @@ namespace WebApplication4
             try
             {
                 string conStr = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-                
                 conn = new SqlConnection(conStr);
                 conn.Open();
             }
             catch (System.Exception ex)
             {
-
                 ex.Message.ToString();
             }
-            
         }
-
         static public string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -44,7 +39,5 @@ namespace WebApplication4
                 return builder.ToString();
             }
         }
-
-       
     }
 }
