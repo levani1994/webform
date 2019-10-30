@@ -15,20 +15,16 @@ namespace WebApplication4
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("Login");
+                Response.Redirect("~/login.aspx?ReturnUrl=" + Server.UrlEncode(Request.AppRelativeCurrentExecutionFilePath + "?" + Request.QueryString));
             }
             else
             {
                 string role = string.Empty;
                 role = Convert.ToString(Session["user"]);
-                if (role == null)
-                {
-                    Response.Redirect("Registration");
-                }
-                else if (role == "member")
+                if (role == "member")
                 {
                     Authors_div.Visible = false;
-                    Author_GridView.Columns[].Visible = false;
+                    Author_GridView.Columns[0].Visible = false;
                     Author_GridView.Columns[6].Visible = false;
                     Author_GridView.Columns[7].Visible = false;
                     Book_gridview.Columns[0].Visible = false;
@@ -42,6 +38,10 @@ namespace WebApplication4
                     
                 }
             }
+            Panel1.Visible = true;
+            Panel2.Visible = false;
+
+         
         }
 
         //language coockies
@@ -147,6 +147,12 @@ namespace WebApplication4
         {
             Session["User"] = null;
             Response.Redirect("login.aspx");
+        }
+
+        protected void AuthorNamesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = true;
         }
     }
 }

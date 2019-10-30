@@ -78,6 +78,25 @@ namespace WebApplication4
             return listAuthors;
         }
 
+
+        public static List<Authors> GetSelectedAuthor()
+        {
+            List<Authors> listAuthors = new List<Authors>();
+            BasePage connection = new BasePage();
+            connection.Create_Connection();
+            SqlCommand cmd = new SqlCommand("GetAuthorNames", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Authors authors = new Authors();
+                authors.ID = Convert.ToInt32(reader["ID"]);
+                authors.Name = reader["AuthorName"].ToString();
+                listAuthors.Add(authors);
+            }
+            conn.Close();
+            return listAuthors;
+        }
+
         public static List<Genres> GetGenres()
         {
             List<Genres> listGenres = new List<Genres>();
@@ -95,6 +114,8 @@ namespace WebApplication4
             conn.Close();
             return listGenres;
         }
+
+
 
         //delete author from database
         public static void DeleteAuthor(int id)
@@ -193,6 +214,8 @@ namespace WebApplication4
             userLogin.UserRole = role;
             return userLogin;
         }
+
+       
     }
 }
 
