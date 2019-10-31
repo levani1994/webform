@@ -40,8 +40,7 @@ namespace WebApplication4
             }
             Panel1.Visible = true;
             Panel2.Visible = false;
-
-         
+           
         }
 
         //language coockies
@@ -153,6 +152,11 @@ namespace WebApplication4
         {
             Panel1.Visible = false;
             Panel2.Visible = true;
+        }
+
+        protected void SearchAuthorInfoByBookCategory_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
         }
     }
 }
