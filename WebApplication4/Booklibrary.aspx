@@ -47,6 +47,9 @@
         #Author_list {
             text-align: left;
         }
+        .w {
+            height: 263px;
+        }
     </style>
 
 
@@ -276,6 +279,10 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#00547E" />
         </asp:GridView>
+
+
+            <asp:Button  ID="Button2" runat="server" Text="Button" />
+
            </div>
 
 

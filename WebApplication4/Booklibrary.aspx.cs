@@ -19,9 +19,9 @@ namespace WebApplication4
             }
             else
             {
-                string role = string.Empty;
-                role = Convert.ToString(Session["user"]);
-                if (role == "member")
+
+                string role = Convert.ToString(Session["user"]);
+                if (role == "SuperAdmin")
                 {
                     Authors_div.Visible = false;
                     Author_GridView.Columns[0].Visible = false;
@@ -32,14 +32,10 @@ namespace WebApplication4
                     AddUserToggle.Visible = false;
                     AddBookToggle.Visible = false;
                 }
-
-                else if (role == "admin")
-                {
-                    
-                }
             }
-            Panel1.Visible = true;
-            Panel2.Visible = false;
+
+            //Panel1.Visible = true;
+            //Panel2.Visible = false;
            
         }
 

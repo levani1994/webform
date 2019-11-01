@@ -34,7 +34,7 @@ namespace WebApplication4
                 cmd.Parameters.AddWithValue("@Email", Email.Value);
                 cmd.Parameters.AddWithValue("@Password", ComputeSha256Hash(Password.Value));
                 cmd.Parameters.AddWithValue("@RegistrationDate", DateTime.Now);
-                cmd.Parameters.AddWithValue("@Role", "user");
+                
                 cmd.ExecuteNonQuery();
                 Response.Redirect("Success.html");
                 conn.Close();
