@@ -21,7 +21,7 @@ namespace WebApplication4
             {
 
                 string role = Convert.ToString(Session["user"]);
-                if (role == "SuperAdmin")
+                if (role == Resources.GlobalResources.AdminRole)
                 {
                     Authors_div.Visible = false;
                     Author_GridView.Columns[0].Visible = false;
@@ -150,9 +150,9 @@ namespace WebApplication4
             Panel2.Visible = true;
         }
 
-        protected void SearchAuthorInfoByBookCategory_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        protected void Unnamed_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("UserControll");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace WebApplication4
         {
             UserLoginInfo usr = DALlibrary.CheckLogin(Email.Value, ComputeSha256Hash(Password.Value));
 
-            if (usr.UserEmail == "True")
+            if (usr.UserEmail == Resources.GlobalResources.IsLogged)
             {
                 Session["user"] = usr.UserRole;
                 Response.Redirect("Booklibrary");

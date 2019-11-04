@@ -74,6 +74,10 @@
         <br />
         <br />
 
+        lin
+        <asp:Button class="btn btn-info btn-block " runat="server" type="submit" OnClick="Unnamed_Click" Text="manage users" />
+
+
         <label runat="server" id="AddUserToggle">Add Author ▼</label>
         <br />
         <br />
@@ -386,7 +390,7 @@
 
 
         <asp:SqlDataSource ID="SearchAuthorInfoByBookCategory" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" 
-            SelectCommand="GetSelectedAuthorInfo" SelectCommandType="StoredProcedure" OnSelecting="SearchAuthorInfoByBookCategory_Selecting">
+            SelectCommand="GetSelectedAuthorInfo" SelectCommandType="StoredProcedure" >
             <SelectParameters>
                 <asp:ControlParameter ControlID="AuthorNamesList" Name="AuthorName" PropertyName="SelectedValue" Type="String" DefaultValue="" />
             </SelectParameters>
