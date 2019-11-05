@@ -7,10 +7,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-   
+
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
-  
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script type="text/Javascript">
         function ConfirmOnDelete(item) {
             if (confirm("are you sure to delete: " + item + "?") == true)
@@ -44,9 +44,11 @@
         #Books_div {
             display: none;
         }
+
         #Author_list {
             text-align: left;
         }
+
         .w {
             height: 263px;
         }
@@ -241,11 +243,11 @@
             <p>
                 <asp:DropDownList ID="AuthorNamesDropdown" runat="server" DataSourceID="AuthorNames" DataTextField="Name" DataValueField="ID">
 
-                    <asp:ListItem  Text="choose a author" />
+                    <asp:ListItem Text="choose a author" />
                 </asp:DropDownList>
             </p>
             <p>
-                <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres"  DataTextField="GenreNames" DataValueField="ID" >
+                <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="GenreNames" DataValueField="ID">
                     <asp:ListItem Text="choose a Genre" />
                 </asp:DropDownList>
             </p>
@@ -257,16 +259,16 @@
             </p>
         </div>
 
-        
-                  
-        
-       
 
-       
-      
-        <asp:GridView  ID="Book_gridview" runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+
+
+
+
+
+
+        <asp:GridView ID="Book_gridview" runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
             <Columns>
-                <asp:BoundField DataField="Id"  HeaderText="Id" SortExpression="Id" />
+                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                 <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
                 <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
                 <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
@@ -285,79 +287,53 @@
         </asp:GridView>
 
 
-            <asp:Button  ID="Button2" runat="server" Text="Button" />
+        <asp:DataList runat="server" DataSourceID="SearchAuthorInfoByName">
+            <ItemTemplate>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+            </ItemTemplate>
 
-          
 
+        </asp:DataList>
 
-
-          <asp:DropDownList ID="AuthorNamesList" runat="server" AutoPostBack="True" DataSourceID="SearchAuthorInfoByName" DataTextField="AuthorName" DataValueField="AuthorName" OnSelectedIndexChanged="AuthorNamesList_SelectedIndexChanged">
-           
+        <asp:DropDownList ID="AuthorNamesList" runat="server" AutoPostBack="True" DataSourceID="SearchAuthorInfoByName" DataTextField="AuthorName" DataValueField="AuthorName" OnSelectedIndexChanged="AuthorNamesList_SelectedIndexChanged">
         </asp:DropDownList>
 
 
-          <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataTextField="Genre" DataValueField="Genre">
-              <asp:ListItem Text="text" Value="genre"/>
+        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataTextField="Genre" DataValueField="Genre">
+            <asp:ListItem Text="text" Value="genre" />
         </asp:DropDownList>
 
-         <asp:Button ID="Button1" runat="server" Text="Refresh" />
+        <asp:Button ID="Button1" runat="server" Text="Refresh" />
 
-          <asp:Panel ID="Panel1" runat="server" Width="495px">
-             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="AllAuthorsAndBooks" Width="503px">
-                 <Columns>
-                     <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
-                     <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
-                     <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
-                     <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
-                     <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate" />
-                 </Columns>
-                 <FooterStyle BackColor="White" ForeColor="#000066" />
-                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                 <RowStyle ForeColor="#000066" />
-                 <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                 <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                 <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                 <SortedDescendingHeaderStyle BackColor="#00547E" />
-              </asp:GridView>
-            </asp:Panel>
-              <asp:Panel ID="Panel2" runat="server" Width="498px">
-                  <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="SearchAuthorInfoByBookCategory" Width="503px">
-                      <Columns>
-                          <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
-                          <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
-                          <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
-                          <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
-                          <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate" />
-                      </Columns>
-                      <FooterStyle BackColor="White" ForeColor="#000066" />
-                      <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-                      <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-                      <RowStyle ForeColor="#000066" />
-                      <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                      <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                      <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                      <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                      <SortedDescendingHeaderStyle BackColor="#00547E" />
-                  </asp:GridView>
-             
-           </asp:Panel>
-     
-
-         
-
-
-
-
-            
-       
-
-
-
-         
-
-
+        <asp:Panel ID="Panel1" runat="server" Width="495px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="AllAuthorsAndBooks" Width="503px">
+                <Columns>
+                    <asp:BoundField DataField="AuthorName" HeaderText="AuthorName" SortExpression="AuthorName" />
+                    <asp:BoundField DataField="Genre" HeaderText="Genre" SortExpression="Genre" />
+                    <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
+                    <asp:BoundField DataField="BookDescribtion" HeaderText="BookDescribtion" SortExpression="BookDescribtion" />
+                    <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate" />
+                </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
+            </asp:GridView>
+        </asp:Panel>
 
 
         <asp:ObjectDataSource ID="DataFromBooks" runat="server"
@@ -370,27 +346,24 @@
             TypeName="WebApplication4.DALlibrary" OldValuesParameterFormatString="original_{0}"></asp:ObjectDataSource>
 
 
-        <asp:ObjectDataSource ID="Genres"  runat="server"
+        <asp:ObjectDataSource ID="Genres" runat="server"
             SelectMethod="GetGenres"
-            
             TypeName="WebApplication4.DALlibrary"></asp:ObjectDataSource>
 
 
 
-        <asp:SqlDataSource ID="SearchAuthorInfoByName" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" 
-            SelectCommand="GetAuthorNames" SelectCommandType="StoredProcedure">
-        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SearchAuthorInfoByName" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>"
+            SelectCommand="GetAuthorNames" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
 
 
-        <asp:SqlDataSource ID="SearchAuthorInfoByGenre" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" 
-            SelectCommand="GetGenres" SelectCommandType="StoredProcedure">
-        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SearchAuthorInfoByGenre" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>"
+            SelectCommand="GetGenres" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
 
 
-        <asp:SqlDataSource ID="SearchAuthorInfoByBookCategory" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" 
-            SelectCommand="GetSelectedAuthorInfo" SelectCommandType="StoredProcedure" >
+        <asp:SqlDataSource ID="SearchAuthorInfoByBookCategory" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>"
+            SelectCommand="GetSelectedAuthorInfo" SelectCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="AuthorNamesList" Name="AuthorName" PropertyName="SelectedValue" Type="String" DefaultValue="" />
             </SelectParameters>
@@ -398,9 +371,8 @@
 
 
 
-        <asp:SqlDataSource ID="AllAuthorsAndBooks" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" 
-            SelectCommand="GetBookAndAuthorInfo" SelectCommandType="StoredProcedure">
-        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="AllAuthorsAndBooks" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>"
+            SelectCommand="GetBookAndAuthorInfo" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
 
 
 

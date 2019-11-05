@@ -34,8 +34,6 @@ namespace WebApplication4
                 }
             }
 
-            //Panel1.Visible = true;
-            //Panel2.Visible = false;
            
         }
 
@@ -144,11 +142,7 @@ namespace WebApplication4
             Response.Redirect("login.aspx");
         }
 
-        protected void AuthorNamesList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Panel1.Visible = false;
-            Panel2.Visible = true;
-        }
+       
 
         protected void Unnamed_Click(object sender, EventArgs e)
         {
