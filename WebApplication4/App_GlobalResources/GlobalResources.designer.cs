@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SuperAdmin.
+        ///   Looks up a localized string similar to Admin.
         /// </summary>
         internal static string AdminRole {
             get {
@@ -75,6 +75,42 @@ namespace Resources {
         internal static string IsLogged {
             get {
                 return ResourceManager.GetString("IsLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manager.
+        /// </summary>
+        internal static string ManagerRole {
+            get {
+                return ResourceManager.GetString("ManagerRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Memeber.
+        /// </summary>
+        internal static string MemberRole {
+            get {
+                return ResourceManager.GetString("MemberRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SuperAdmin.
+        /// </summary>
+        internal static string SuperAdminRole {
+            get {
+                return ResourceManager.GetString("SuperAdminRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string UserRole {
+            get {
+                return ResourceManager.GetString("UserRole", resourceCulture);
             }
         }
     }

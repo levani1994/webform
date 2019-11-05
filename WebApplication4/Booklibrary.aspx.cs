@@ -21,7 +21,7 @@ namespace WebApplication4
             {
 
                 string role = Convert.ToString(Session["user"]);
-                if (role == Resources.GlobalResources.AdminRole)
+                if (role == Resources.GlobalResources.UserRole)
                 {
                     Authors_div.Visible = false;
                     Author_GridView.Columns[0].Visible = false;

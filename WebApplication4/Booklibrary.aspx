@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    
+   
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
   
@@ -74,7 +74,7 @@
         <br />
         <br />
 
-        lin
+
         <asp:Button class="btn btn-info btn-block " runat="server" type="submit" OnClick="Unnamed_Click" Text="manage users" />
 
 
@@ -260,11 +260,11 @@
         
                   
         
-        <div class="w">
+       
 
        
       
-        <asp:GridView class ID="Book_gridview" runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+        <asp:GridView  ID="Book_gridview" runat="server" AutoGenerateColumns="False" DataSourceID="DataFromBooks" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
             <Columns>
                 <asp:BoundField DataField="Id"  HeaderText="Id" SortExpression="Id" />
                 <asp:BoundField DataField="BookName" HeaderText="BookName" SortExpression="BookName" />
@@ -287,7 +287,7 @@
 
             <asp:Button  ID="Button2" runat="server" Text="Button" />
 
-           </div>
+          
 
 
 

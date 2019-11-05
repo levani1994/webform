@@ -118,9 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdminRole" xml:space="preserve">
-    <value>SuperAdmin</value>
+    <value>Admin</value>
   </data>
   <data name="IsLogged" xml:space="preserve">
     <value>True</value>
+  </data>
+  <data name="ManagerRole" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="MemberRole" xml:space="preserve">
+    <value>Memeber</value>
+  </data>
+  <data name="SuperAdminRole" xml:space="preserve">
+    <value>SuperAdmin</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

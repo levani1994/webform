@@ -320,6 +320,7 @@
       <DependentUpon>UserControll.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserLoginInfo.cs" />
+    <Compile Include="Users.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

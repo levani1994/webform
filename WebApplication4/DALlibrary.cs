@@ -35,6 +35,27 @@ namespace WebApplication4
             return listAuthors;
         }
 
+        //get author names from database
+        public static List<Authors> GetAuthorNames()
+        {
+            List<Authors> listAuthors = new List<Authors>();
+            BasePage connection = new BasePage();
+            connection.Create_Connection();
+            SqlCommand cmd = new SqlCommand("GetAuthorNames", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Authors authors = new Authors();
+                authors.ID = Convert.ToInt32(reader["ID"]);
+                authors.Name = reader["AuthorName"].ToString();
+
+                listAuthors.Add(authors);
+            }
+
+            conn.Close();
+            return listAuthors;
+        }
+
         //get books from database
         public static List<Books> GetBooks()
         {
@@ -59,25 +80,23 @@ namespace WebApplication4
             return listBooks;
         }
 
-        //get author names from database
-        public static List<Authors> GetAuthorNames()
+       public static List<Users> GetUsers()
         {
-            List<Authors> listAuthors = new List<Authors>();
+            List<Users> listUsers = new List<Users>();
             BasePage connection = new BasePage();
             connection.Create_Connection();
-            SqlCommand cmd = new SqlCommand("GetAuthorNames", conn);
+            SqlCommand cmd = new SqlCommand("GetUserNames", conn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Authors authors = new Authors();
-                authors.ID = Convert.ToInt32(reader["ID"]);
-                authors.Name = reader["AuthorName"].ToString();
-            
-                listAuthors.Add(authors);
+                Users users = new Users();
+                users.UserName = reader["UserName"].ToString();
+                listUsers.Add(users);
             }
            
             conn.Close();
-            return listAuthors;
+            return listUsers;
+
         }
 
 
@@ -102,8 +121,6 @@ namespace WebApplication4
             conn.Close();
             return listGenres;
         }
-
-
 
         //delete author from database
         public static void DeleteAuthor(int id)
