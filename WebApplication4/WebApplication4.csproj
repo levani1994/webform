@@ -273,6 +273,7 @@
       <DependentUpon>authors.xsd</DependentUpon>
     </Compile>
     <Compile Include="Books.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Genres.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

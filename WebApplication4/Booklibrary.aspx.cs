@@ -11,16 +11,17 @@ namespace WebApplication4
 {
     public partial class Booklibrary : BasePage
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null)
+            if (Session[Constants.UserSession] == null)
             {
                 Response.Redirect("~/login.aspx?ReturnUrl=" + Server.UrlEncode(Request.AppRelativeCurrentExecutionFilePath + "?" + Request.QueryString));
             }
             else
             {
 
-                string role = Convert.ToString(Session["user"]);
+                string role = Convert.ToString(Session[Constants.UserSession]);
                 if (role == Resources.GlobalResources.UserRole)
                 {
                     Authors_div.Visible = false;
@@ -32,11 +33,38 @@ namespace WebApplication4
                     AddUserToggle.Visible = false;
                     AddBookToggle.Visible = false;
                 }
+
+                if (!IsPostBack)
+                {
+                    AuthorNamesListDropdown.DataSource = GetData("GetAuthorNames", null);
+                    AuthorNamesListDropdown.DataBind();
+                    
+                    ListItem listAuthor = new ListItem("select author", "0");
+                    AuthorNamesListDropdown.Items.Insert(0, listAuthor);
+
+                    ListItem listGenre = new ListItem("select genre", "0" );
+                    GenresOfAuthorsDropdown.Items.Insert(0, listGenre);
+
+                    GenresOfAuthorsDropdown.Enabled = false;
+                }
             }
 
-           
+
         }
 
+        private DataSet GetData(string AuthorName, SqlParameter sqlParameter)
+        {
+            Create_Connection();
+            SqlDataAdapter sqlData = new SqlDataAdapter(AuthorName, conn);
+            sqlData.SelectCommand.CommandType = CommandType.StoredProcedure;
+            if (sqlParameter != null)
+            {
+                sqlData.SelectCommand.Parameters.Add(sqlParameter);
+            }
+            DataSet dataSet = new DataSet();
+            sqlData.Fill(dataSet);
+            return dataSet;
+        }
         //language coockies
         protected override void InitializeCulture()
         {
@@ -84,21 +112,16 @@ namespace WebApplication4
                 conn.Close();
                 Author_GridView.DataBind();
                 Response.Redirect("Booklibrary");
-
-
-
             }
-
         }
 
         //insert books in database
         public void AddBook(object sender, EventArgs e)
         {
-            BasePage connection = new BasePage();
-            connection.Create_Connection();
+            Create_Connection();
             SqlCommand cmd = new SqlCommand("InsertBook", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            if (BookName.Text == String.Empty || BookDescribtion.Text == string.Empty || AuthorNamesDropdown.SelectedValue == null || GenresDropdown.SelectedValue == null)
+            if (BookName.Text == string.Empty || BookDescribtion.Text == string.Empty || AuthorNamesDropdown.SelectedValue == null || GenresDropdown.SelectedValue == null)
             {
                 Response.Redirect("Booklibrary");
             }
@@ -115,7 +138,7 @@ namespace WebApplication4
                 Response.Redirect("Booklibrary");
             }
         }
-        
+
         //alert for delete 
         protected void AuthorGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -138,15 +161,34 @@ namespace WebApplication4
         //loguot
         protected void Loguot(object sender, EventArgs e)
         {
-            Session["User"] = null;
+            Session[Constants.UserSession] = null;
             Response.Redirect("login.aspx");
         }
-
-       
 
         protected void Unnamed_Click(object sender, EventArgs e)
         {
             Response.Redirect("UserControll");
+        }
+
+        protected void AuthorNamesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AuthorNamesListDropdown.SelectedIndex == 0)
+            {
+                GenresOfAuthorsDropdown.SelectedIndex = 0;
+                GenresOfAuthorsDropdown.Enabled = false;
+
+            }
+            else
+            {
+                GenresOfAuthorsDropdown.Enabled = true;
+                SqlParameter parameter = new SqlParameter("@AuthorId", AuthorNamesListDropdown.SelectedValue);
+                GenresOfAuthorsDropdown.DataSource = GetData("GetAuthorGenres", parameter);
+                GenresOfAuthorsDropdown.DataBind();
+
+                ListItem listGenre = new ListItem("select genre", "0");
+                GenresOfAuthorsDropdown.Items.Insert(0, listGenre);
+
+            }
         }
     }
 }

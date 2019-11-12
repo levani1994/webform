@@ -256,22 +256,22 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.GridView Book_gridview;
         
         /// <summary>
-        /// AuthorNamesList control.
+        /// AuthorNamesListDropdown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AuthorNamesList;
+        protected global::System.Web.UI.WebControls.DropDownList AuthorNamesListDropdown;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// GenresOfAuthorsDropdown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList GenresOfAuthorsDropdown;
         
         /// <summary>
         /// Button1 control.
@@ -281,15 +281,6 @@ namespace WebApplication4 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// GridView1 control.
@@ -337,30 +328,12 @@ namespace WebApplication4 {
         protected global::System.Web.UI.WebControls.SqlDataSource SearchAuthorInfoByName;
         
         /// <summary>
-        /// SearchAuthorInfoByGenre control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SearchAuthorInfoByGenre;
-        
-        /// <summary>
-        /// SearchAuthorInfoByBookCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SearchAuthorInfoByBookCategory;
-        
-        /// <summary>
-        /// AllAuthorsAndBooks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AllAuthorsAndBooks;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
     }
 }

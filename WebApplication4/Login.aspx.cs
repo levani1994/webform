@@ -13,8 +13,8 @@ namespace WebApplication4
 
             if (usr.UserEmail == Resources.GlobalResources.IsLogged)
             {
-                Session["user"] = usr.UserRole;
-                Response.Redirect("Booklibrary");
+                Session[Constants.UserSession] = usr.UserRole;
+                Response.Redirect("Booklibrary.aspx");
             }
             else
              {

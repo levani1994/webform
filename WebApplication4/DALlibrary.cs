@@ -90,7 +90,9 @@ namespace WebApplication4
             while (reader.Read())
             {
                 Users users = new Users();
+                users.Id = Convert.ToInt32(reader["ID"]);
                 users.UserName = reader["UserName"].ToString();
+
                 listUsers.Add(users);
             }
            

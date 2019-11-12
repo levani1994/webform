@@ -17,8 +17,8 @@
 
 
                     <div class="list-group">
-                        <a href="" class="list-group-item list-group-item-action">
-                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("UserName") %>' /></a>
+                        <a href="UserControll<%# Eval("ID") %>" class="list-group-item list-group-item-action">
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("ID") %>' /></a>
 
 
                     </div>
@@ -29,15 +29,6 @@
                 </ItemTemplate>
 
             </asp:DataList>
-            <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active">
-                    Cras justo odio
-                </button>
-                <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-                <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-                <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-                <button type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
-            </div>
 
 
 
@@ -48,7 +39,7 @@
         </div>
 
     </form>
-    <asp:ObjectDataSource ID="UserNames" runat="server" SelectMethod="GetUsers" TypeName="WebApplication4.DALlibrary" OldValuesParameterFormatString="original_{0}"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="UserNames" runat="server" SelectMethod="GetUsers" TypeName="WebApplication4.DALlibrary" ></asp:ObjectDataSource>
 </body>
 </html>
 
