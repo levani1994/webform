@@ -16,7 +16,7 @@ namespace WebApplication4
         {
             if (Session[Constants.UserSession] == null)
             {
-                Response.Redirect("~/login.aspx?ReturnUrl=" + Server.UrlEncode(Request.AppRelativeCurrentExecutionFilePath + "?" + Request.QueryString));
+                Response.Redirect("Login.aspx?url=" + Server.UrlEncode(Request.Url.AbsoluteUri));
             }
             else
             {

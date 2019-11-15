@@ -80,7 +80,7 @@ namespace WebApplication4
             return listBooks;
         }
 
-       public static List<Users> GetUsers()
+        public static List<Users> GetUsers()
         {
             List<Users> listUsers = new List<Users>();
             BasePage connection = new BasePage();
@@ -90,19 +90,23 @@ namespace WebApplication4
             while (reader.Read())
             {
                 Users users = new Users();
-                users.Id = Convert.ToInt32(reader["ID"]);
-                users.UserName = reader["UserName"].ToString();
+                users.Id = Convert.ToInt32(reader[nameof(users.Id)]);
+                users.UserName = reader[nameof(users.UserName)].ToString();
+                users.UserSurname = reader[nameof(users.UserSurname)].ToString();
+                users.UserEmail = reader[nameof(users.UserEmail)].ToString();
+                users.UserRole = reader[nameof(users.UserRole)].ToString();
+
+
+
+
 
                 listUsers.Add(users);
             }
-           
+
             conn.Close();
             return listUsers;
 
         }
-
-
- 
 
         public static List<Genres> GetGenres()
         {
@@ -119,7 +123,7 @@ namespace WebApplication4
                 listGenres.Add(genres);
             }
 
-           
+
             conn.Close();
             return listGenres;
         }
@@ -222,7 +226,7 @@ namespace WebApplication4
             return userLogin;
         }
 
-       
+
     }
 }
 

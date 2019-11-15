@@ -10,11 +10,15 @@ namespace WebApplication4
         protected void UserLogin(object sender, EventArgs e)
         {
             UserLoginInfo usr = DALlibrary.CheckLogin(Email.Value, ComputeSha256Hash(Password.Value));
-
+            string ReturnUrl = Convert.ToString(Request.QueryString["url"]);
             if (usr.UserEmail == Resources.GlobalResources.IsLogged)
             {
                 Session[Constants.UserSession] = usr.UserRole;
-                Response.Redirect("Booklibrary.aspx");
+                if (ReturnUrl == null)
+                {
+                    Response.Redirect("Booklibrary.aspx");
+                }
+                Response.Redirect(ReturnUrl);
             }
             else
              {

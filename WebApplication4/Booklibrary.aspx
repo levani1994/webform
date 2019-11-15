@@ -9,32 +9,9 @@
     <title></title>
 
     <script src="Scripts/jquery-3.4.1.min.js"></script>
-    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
-
-    <script type="text/Javascript">
-        function ConfirmOnDelete(item) {
-            if (confirm("are you sure to delete: " + item + "?") == true)
-                return true;
-            else
-                return false;
-        }
-
-
-
-        $(document).ready(function () {
-
-
-            $("#AddUserToggle").click(function () {
-                $("#Authors_div").slideToggle("slow");
-            });
-
-            $("#AddBookToggle").click(function () {
-                $("#Books_div").slideToggle("slow");
-            });
-        });
-
-
-    </script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/CustomScript.js"></script>
+   
 
     <style>
         #Authors_div {
@@ -145,8 +122,7 @@
                     ForeColor="Red"
                     ControlToValidate="Email"
                     ValidationGroup="authorval"
-                    ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                </asp:RegularExpressionValidator>
+                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
             </p>
 
             <p>
@@ -297,8 +273,7 @@
 
                 <asp:DropDownList ID="GenresOfAuthorsDropdown" DataValueField="ID" DataTextField="Genre" runat="server" AutoPostBack="True">
                 </asp:DropDownList>
-
-                <asp:Button ID="Button1" runat="server" Text="Refresh" />
+                
 
 
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="503px" DataSourceID="SearchAuthorInfoByName">
