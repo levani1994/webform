@@ -29,12 +29,15 @@
                         </tr>
                     </thead>
 
-                    <tr>
-                        <td style="text-align: center;" class=""><%# Eval("ID") %></td>
-                        <td style="text-align: center;" class=""><%# Eval("UserName") %></td>
+                    <tr data-id="<%# Eval("ID") %>">
+                        <td style="text-align: center;"  class=""><%# Eval("ID") %></td>
+                        <td style="text-align: center;" id="name" class=""><%# Eval("UserName") %></td>
                         <td style="text-align: center;" class=""><%# Eval("UserSurname") %></td>
                         <td style="text-align: center;" class=""><%# Eval("UserEmail") %></td>
                         <td style="text-align: center;" class=""><%# Eval("UserRole") %></td>
+
+
+
                         <td style="text-align: center;">
                             <label data-id="<%# Eval("ID") %>" class="btn btn-success">Edit</label>
                             <label class="btn btn-danger" data-toggle="modal" data-target="#myModal" contenteditable="false">delete</label>
@@ -42,17 +45,12 @@
                     </tr>
                 </table>
 
-
-
-                <%--                    <td>
-                        <a class="add" title="" data-toggle="tooltip" data-original-title="Add" style="display: none;"><i class="material-icons">save</i></a>
-                        <a class="edit" title="" data-toggle="tooltip" data-original-title="Edit" style="display: inline-block;"><i class="material-icons">create</i></a>
-                        <a class="delete" title="" data-toggle="tooltip" data-original-title="Delete"><i class="material-icons">delete</i></a>
-                    </td>--%>
+                 
             </ItemTemplate>
         </asp:DataList>
 
-        <div id="myModal" class="modal fade">
+
+         <div id="myModal" class="modal" runat="server">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -61,9 +59,32 @@
                         <h4 class="modal-title">Confirmation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>
-                            Do you want to save changes you made to document before closing?
-                        </p>
+                        <div class="form-group">
+
+
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="<%# Eval("UserName") %>"/>
+                        </div>
+                        <div class="form-group">
+
+
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="Enter email" />
+                        </div>
+                        <div class="form-group">
+
+
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="Enter email" />
+                        </div>
+                        <div class="form-group">
+
+
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="UserName" aria-describedby="emailHelp" placeholder="Enter email" />
+                        </div>
+
+
                         <p class="text-warning">
                             <small>If you don't save, your changes will be lost.</small>
                         </p>
@@ -71,11 +92,14 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             Close</button>
-                      
+
                     </div>
                 </div>
             </div>
         </div>
+
+
+      
 
 
 

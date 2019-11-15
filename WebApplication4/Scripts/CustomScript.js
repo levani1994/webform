@@ -58,9 +58,17 @@
 //});
 
 $(document).ready(function () {
-    $(".btn-success").click(function(){
-        $("#myModal").modal('show');
+    //$(".btn-success").click(function(){
+    //    $("#myModal").modal('show');
+    //});
+    //name = $.trim($("#name").eq(0).text());
+    //console.log(name);
+    //$('#UserName').val(name);
+    var lastClickId;
+    $('.btn-success').click(function () {
+        lastClickId = $(this).data('id');
+        console.log(lastClickId);
+        var str = $("tr[data-id='" + lastClickId + "']>td:eq(2)").text();
+        alert(str);
     });
-
-
 });
