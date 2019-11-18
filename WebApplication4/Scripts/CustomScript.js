@@ -32,7 +32,7 @@
 //    });
 
 
-//   
+   
 //    $(".btn[data-target='#myModal']").click(function () {
 //        var columnHeadings = $("thead th").map(function () {
 //            return $(this).text();
@@ -64,11 +64,44 @@ $(document).ready(function () {
     //name = $.trim($("#name").eq(0).text());
     //console.log(name);
     //$('#UserName').val(name);
-    var lastClickId;
+    var selectedTrId = 0;
     $('.btn-success').click(function () {
-        lastClickId = $(this).data('id');
-        console.log(lastClickId);
-        var str = $("tr[data-id='" + lastClickId + "']>td:eq(2)").text();
-        alert(str);
+        selectedTrId = $(this).data('id');
+       
+        var username = $("tr[data-id='" + selectedTrId + "']>td:eq(1)").text();
+        var surname = $("tr[data-id='" + selectedTrId + "']>td:eq(2)").text();
+        var mail = $("tr[data-id='" + selectedTrId + "']>td:eq(3)").text();
+        var role = $("tr[data-id='" + selectedTrId + "']>td:eq(4)").text();
+        $('#UserName').val(username);
+        $('#Surname').val(surname);
+        $('#Email').val(mail);
+        $('#UserRole').val(role);
+
+        //selectedTrId = $(this).data('id');
+        //console.log(selectedTrId);
+        //var str = $("tr[data-id='" + selectedTrId + "']>td:eq(2)").text();
+        //alert(str);
+       
+        
     });
+    $('#UpdateBtn').click(function () {
+      
+
+        $.ajax({
+            url: '/UserControll.aspx/Update',
+            method: 'GET',
+           
+            data: { 'id': 21 },
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success:
+                console.log("Dede"),
+            
+            error: console.log("ddesd")
+        });
+
+    });
+
+
+
 });

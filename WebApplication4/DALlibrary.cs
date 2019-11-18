@@ -6,6 +6,9 @@ using System.Data.SqlClient;
 
 
 using System.Text.RegularExpressions;
+using System.Web.Script.Services;
+using System.Web.Services;
+
 namespace WebApplication4
 {
     public class DALlibrary : BasePage
@@ -129,6 +132,8 @@ namespace WebApplication4
         }
 
         //delete author from database
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true)]
         public static void DeleteAuthor(int id)
         {
 
@@ -163,6 +168,7 @@ namespace WebApplication4
         }
 
         //update author in database
+        [WebMethod]
         public static void UpdateAuthor(string name, string surname, string nationality, string birthdate, int id, string email, bool allowAuthor)
         {
             BasePage connection = new BasePage();

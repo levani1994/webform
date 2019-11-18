@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace WebApplication4
 {
@@ -16,5 +18,13 @@ namespace WebApplication4
         {
 
         }
+         [WebMethod]
+        
+         [ScriptMethod(UseHttpGet = true)]
+        public static void Update(int id)
+        {
+            DALlibrary.DeleteAuthor(id);
+        }
+
     }
 }

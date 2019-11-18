@@ -158,7 +158,7 @@ namespace WebApplication4
             }
         }
 
-        //loguot
+        //logout
         protected void Loguot(object sender, EventArgs e)
         {
             Session[Constants.UserSession] = null;
