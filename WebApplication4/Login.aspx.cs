@@ -13,7 +13,7 @@ namespace WebApplication4
             string ReturnUrl = Convert.ToString(Request.QueryString["url"]);
             if (usr.UserEmail == Resources.GlobalResources.IsLogged)
             {
-                Session[Constants.UserSession] = usr.UserRole;
+                Session[Constants.UserSession] = usr.RoleName;
                 if (ReturnUrl == null)
                 {
                     Response.Redirect("Booklibrary.aspx");

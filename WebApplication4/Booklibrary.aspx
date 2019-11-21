@@ -51,7 +51,7 @@
         </asp:DropDownList>
 
 
-        <asp:Button class="btn btn-info btn-block " runat="server" type="submit" OnClick="Loguot" Text="Log out" />
+        <asp:Button class="btn btn-info btn-block " runat="server" type="submit" OnClick="Logout" Text="Log out" />
         <br />
         <br />
 
@@ -225,7 +225,7 @@
                 </asp:DropDownList>
             </p>
             <p>
-                <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="GenreNames" DataValueField="ID">
+                <asp:DropDownList ID="GenresDropdown" runat="server" DataSourceID="Genres" DataTextField="Genre" DataValueField="ID">
                     <asp:ListItem Text="choose a Genre" />
                 </asp:DropDownList>
             </p>

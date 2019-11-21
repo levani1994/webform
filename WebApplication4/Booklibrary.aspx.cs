@@ -14,7 +14,7 @@ namespace WebApplication4
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[Constants.UserSession] == null)
+             if (Session[Constants.UserSession] == null)
             {
                 Response.Redirect("Login.aspx?url=" + Server.UrlEncode(Request.Url.AbsoluteUri));
             }
@@ -22,7 +22,7 @@ namespace WebApplication4
             {
 
                 string role = Convert.ToString(Session[Constants.UserSession]);
-                if (role == Resources.GlobalResources.UserRole)
+                if (role == Resources.GlobalResources.MemberRole)
                 {
                     Authors_div.Visible = false;
                     Author_GridView.Columns[0].Visible = false;
@@ -159,7 +159,7 @@ namespace WebApplication4
         }
 
         //logout
-        protected void Loguot(object sender, EventArgs e)
+        protected void Logout(object sender, EventArgs e)
         {
             Session[Constants.UserSession] = null;
             Response.Redirect("login.aspx");

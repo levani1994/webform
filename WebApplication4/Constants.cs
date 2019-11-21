@@ -2,6 +2,6 @@
 {
     public class Constants 
     {
-        public const string UserSession = "user";
+        public static string UserSession = "user";
     }
 }
