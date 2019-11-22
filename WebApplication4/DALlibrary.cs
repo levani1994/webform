@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Data;
 using System.Data.SqlClient;
-
-
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Script.Services;
 using System.Web.Services;
-using System.Linq;
 namespace WebApplication4
 {
     public class DALlibrary : BasePage

@@ -26,10 +26,10 @@
                 <%foreach (var item in GetUsers())
                     { %>
                 <tr data-id="<%= item.Id %>">
-                    <td style="text-align: center;" class=""><%= item.UserName %></td>
-                    <td style="text-align: center;" id="name" class=""><%= item.UserSurname%></td>
-                    <td style="text-align: center;" class=""><%= item.UserEmail %></td>
-                    <td style="text-align: center;" class=""><%= item.UserRoles %></td>
+                    <td style="text-align: center;" ><%= item.UserName %></td>
+                    <td style="text-align: center;" id="name"><%= item.UserSurname%></td>
+                    <td style="text-align: center;" ><%= item.UserEmail %></td>
+                    <td style="text-align: center;" ><%= item.UserRoles %></td>
                     <td style="text-align: center;">
                         <label data-id="<%= item.Id %>" class="btn btn-success" data-toggle="modal" data-target="#myModal" contenteditable="false">Edit</label>
                         <label class="btn btn-danger">delete</label>
@@ -47,7 +47,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             &times;</button>
                     </div>
-                        <div class="modal-body">
+                        <div id="modal-div" class="modal-body">
                    
 
                        
@@ -74,10 +74,10 @@
 
                    
                            
-                                    <input id="<%= item.ID %> " type="checkbox" checked="checked"     ="<%= item.IsSelected %> " value="test" />
+                                    <input id="<%= item.ID %>" type="checkbox" class="Checkbox" />
                         
                            
-                            <label data-attr="<%= item.ID %> "><%= item.RoleName %> </label>
+                            <label data-attr="<%= item.ID %>"><%= item.RoleName %> </label>
                             <br />
                             <% } %>
                         </div>

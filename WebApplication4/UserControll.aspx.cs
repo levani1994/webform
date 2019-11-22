@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Script.Services;
 using System.Web.Services;
-using System.Net.Http;
-using System.Net;
 
 namespace WebApplication4
 {
@@ -21,10 +19,7 @@ namespace WebApplication4
         [WebMethod]
         public static void Update(int id, string name, string surname, string email)
         {
-               DALlibrary.UpdateUser(id, name, surname, email);
-            
-
-         
+            DALlibrary.UpdateUser(id, name, surname, email);
         }
 
         public static List<Users> GetUsers()

@@ -33,8 +33,21 @@
                 $('#UserName').val(user.UserName);
                 $('#Surname').val(user.UserSurname);
                 $('#Email').val(user.UserEmail);
+                for (var i in user.UserRoles) {
+                    var id = user.UserRoles[i].ID;
+                    $('#' + id).attr('checked', 'checked');
 
+                }
+                
             }
         });
     });
+
+
+    //$('#myModal').on('hide.bs.modal', function () {
+    //   // $('#modal-div').each(function () {
+    //        $('#' + 1).attr('checked', 'checked');
+    //   // });
+    //    });
+
 });
