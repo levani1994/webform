@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="WebApplication4.Registration" %>
+
 <!DOCTYPE html>
 <link href="Content/bootstrap.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -15,7 +16,7 @@
             <div class="form-row mb-4">
                 <div class="col">
                     <!-- First name -->
-                    <input runat="server" type="text"  id="FirstName" class="form-control" placeholder="First name" required="required" >
+                    <input runat="server" type="text" id="FirstName" class="form-control" placeholder="First name" required="required">
                 </div>
                 <div class="col">
                     <!-- Last name -->
@@ -31,10 +32,22 @@
             <small id="passwordHelperBlock" class="form-text text-muted mb-4">al least 8 symbols
             </small>
             <input runat="server" type="password" id="RepeatPassword" class="form-control mb-4" placeholder="Repeat Password" required="required">
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01" runat="server">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+
+            <br />
+
+            <br />
+
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
             <!-- Sign up button -->
-            <asp:button class="btn btn-info btn-block" runat="server" type="submit" onclick="UserRegistration" Text="Sign up" />
+            <asp:Button class="btn btn-info btn-block" runat="server" type="submit" OnClick="UserRegistration" Text="Sign up" />
             <p class="h6">or</p>
-           <a href="Login.aspx" class="btn btn-info btn-block">Log in</a>
+            <a href="Login.aspx" class="btn btn-info btn-block">Log in</a>
         </form>
     </div>
 </body>

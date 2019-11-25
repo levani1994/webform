@@ -13,6 +13,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+</asp:ScriptManager>
         <table class="table table-hover shadow-lg rounded ">
             <thead>
                 <tr>
@@ -26,6 +29,7 @@
                 <%foreach (var item in GetUsers())
                     { %>
                 <tr data-id="<%= item.Id %>">
+                    <td ></td>
                     <td style="text-align: center;" ><%= item.UserName %></td>
                     <td style="text-align: center;" id="name"><%= item.UserSurname%></td>
                     <td style="text-align: center;" ><%= item.UserEmail %></td>

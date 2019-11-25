@@ -21,7 +21,8 @@ namespace WebApplication4
         {
             DALlibrary.UpdateUser(id, name, surname, email);
         }
-
+        [WebMethod]
+      
         public static List<Users> GetUsers()
         {
             var Model = DALlibrary.GetUsers();

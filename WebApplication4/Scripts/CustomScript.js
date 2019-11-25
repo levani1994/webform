@@ -5,7 +5,7 @@
         var Name = $('#UserName').val();
         var Surname = $('#Surname').val();
         var Email = $('#Email').val();
-        var listOfRoles = []
+       
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",

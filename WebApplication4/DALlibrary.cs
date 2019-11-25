@@ -78,7 +78,8 @@ namespace WebApplication4
             conn.Close();
             return listBooks;
         }
-
+        [WebMethod]
+       
         public static List<Users> GetUsers()
         {
             List<Users> listUsers = new List<Users>();
@@ -93,6 +94,8 @@ namespace WebApplication4
                 users.UserName = reader[nameof(users.UserName)].ToString();
                 users.UserSurname = reader[nameof(users.UserSurname)].ToString();
                 users.UserEmail = reader[nameof(users.UserEmail)].ToString();
+                users.ImageData = Convert.ToByte[(reader[nameof(users.ImageData)])];
+
                 listUsers.Add(users);
             }
             conn.Close();
